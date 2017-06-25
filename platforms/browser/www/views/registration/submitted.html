@@ -1,0 +1,17 @@
+
+   <h4 class="text-center">Thank You!</h4>
+
+
+                    <h3 class="text-center"><strong>{{currentUser.lastname | uppercase}}, {{currentUser.firstname}}</strong><br><small> Your application has been successfully submitted.<br> The status of your application is:</small></h3>
+                 
+                    <h1 class="text-center"><span ng-if="personalInfo.status <= 4" class="label label-info">PROCESSING</span></h1>
+                     <h1 class="text-center"><span ng-if="personalInfo.status == 5" class="label label-danger">REJECTED</span></h1>
+
+                     <div ng-if="personalInfo.status == 6">
+                      <h1 class="text-center"><span class="label label-success">APPROVED</span></h1>
+                       <p ng-show="currentUser.regNumber"><h4 class="text-center">Your temporary registration # is:</h4><h3 class="text-center"><mark> {{currentUser.regNumber}} </mark></h3></p></div>
+
+                     <div class="col-xs-4 col-xs-offset-4">
+                    <button class="btn btn-info btn-lg btn-block"  ng-if="personalInfo.status == 6" ng-disabled="personalInfo.status < 6" ng-click="acceptAdmission()">Accept Registration</button>
+                    </div>
+            

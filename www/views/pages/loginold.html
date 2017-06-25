@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">STARS<sup>®</sup> STAFF LOGIN</h1>
+                </div>
+                <div class="panel-body">
+                    <form role="form" name="loginForm" ng-submit="login()" novalidate>
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="E-mail" name="email" ng-model="email" type="email" required>
+                                <div style="color:red" ng-messages="loginForm.email.$dirty && loginForm.email.$error" role="alert">
+                                    <div ng-message="required">Please enter a password.</div>
+                                    <div ng-message="email">Must be a valid email address.</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" ng-model="password" name="password" type="password" required maxlength="15"
+                                    minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                                <div style="color:red" ng-messages="loginForm.password.$dirty && loginForm.password.$error" role="alert">
+                                    <div ng-message="required">Please enter a password.</div>
+                                    <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                    <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                    <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                                </div>
+
+                            </div>
+                            <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+                          
+                            <button type="submit" class="btn btn-lg btn-success btn-block" ng-disabled="loginForm.$invalid">Login</button>
+                            <br><a ui-sref="forgot">I have forgotten my password.</a>
+                            
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

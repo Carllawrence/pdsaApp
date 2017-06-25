@@ -1,0 +1,70 @@
+<div class="container">
+<div class="row">
+ <h2>Student Application Portal</h2>
+  <footer>Welcome <strong>{{currentUser.firstname}} {{currentUser.lastname}}</strong>. You can complete your IPRC East New Student Application in   <span class="fa-stack">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">3</i>
+    </span> easy steps.</footer>
+   
+</div>
+  <hr class="my-2">
+ 
+<div class="row">
+  
+   <button class="btn btn-default col-sm-3 col-md-3" ui-sref="application.applicationForm">
+   
+      <h1 class="text-center">
+     <span class="fa-stack">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">1</i>
+      <i class="fa fa-check fa-stack greencolor" ng-show='personalInfo.status >= 1'></i>
+    </span></h1>
+   
+        
+       
+       <p class="text-center"><i class="fa fa-list-alt fa-3x" aria-hidden="true"></i> <br>
+Complete <br>Application Form</p>
+      
+   
+   </button>
+
+   <div class="col-sm-1"></div>
+ 
+ <button class="btn btn-default col-sm-3 col-md-3" ng-disabled="personalInfo.status < 1" ui-sref="application.uploadDocs">
+  
+    <h1 class="text-center">
+     <span class="fa-stack">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">2</i>
+       <i class="fa fa-check fa-stack greencolor" ng-show='personalInfo.status >= 2'></i>
+    </span></h1>
+     
+
+       <p class="text-center"><i class="fa fa-files-o fa-3x" aria-hidden="true"></i><br>
+Upload Relevant<br> Documents</p>
+    
+             
+ 
+  
+ </button>
+
+  <div class="col-sm-1"></div>
+    <button class="btn btn-default col-sm-3 col-md-3"  ng-disabled="personalInfo.status < 2" ui-sref="application.paySubmit">
+       <h1 class="text-center">
+     <span class="fa-stack">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-inverse fa-stack-1x">3</i>
+       <i class="fa fa-check fa-stack-1x greencolor" ng-show='personalInfo.status >= 3'></i>
+    </span></h1>
+   
+        
+       
+       <p class="text-center"><i class="fa fa-money fa-3x" aria-hidden="true"></i><br>
+Pay Application<br> Fee and Submit</p>
+        
+      </button>
+    
+ 
+</div>
+
+</div>

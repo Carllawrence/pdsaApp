@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Change your password</h2>
+                </div>
+                <div class="panel-body">
+
+
+                    <form name="changepassForm" role="form"  ng-submit="changepass(changePass)">
+<div class="alert alert-success" ng-show="changePassMsgSuccess">
+  <strong>Success!</strong> {{changePassMsgSuccess}}</div>
+  <div class="alert alert-success" ng-show="changePassMsgFail">
+  <strong>Success!</strong> {{changePassMsgFail}}</div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="New password" ng-model="changePass.password" name="password" type="password" required maxlength="15"
+                                minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                            <div style="color:red" ng-messages="changepassForm.password.$dirty && changepassForm.password.$error" role="alert">
+                                <div ng-message="required">Please enter a password.</div>
+                                <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Confirm new password" ng-model="changePass.password2" name="password2" type="password" required
+                                maxlength="15" minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                            <div style="color:red" ng-messages="changepassForm.password2.$dirty && changepassForm.password2.$error" role="alert">
+                                <div ng-message="required">Please enter a password.</div>
+                                <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" ng-hide=true ng-model="formData.uuid" id="uuid" class="form-control" value="{{uuid}}" />
+                        </div>
+
+
+                        <button class="btn btn-default btn-success btn-block" type="submit" ng-disabled="changepassForm.$invalid">Change my password</button>
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

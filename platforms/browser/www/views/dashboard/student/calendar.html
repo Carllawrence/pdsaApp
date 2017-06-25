@@ -1,0 +1,57 @@
+
+<div class="container-fluid" style="background-color:#4ca6ff;">
+  <dl class="row" ng-hide="toggleSearch" style="margin-bottom: 0px;">
+  <dt class="col-xs-8"><h3 class="display-4">Event's Calendar</h3></dt>
+  <dd class="col-xs-4"><h3 class="display-4" style="text-align:right;">
+  <button type="button" ng-click="toggleSearch = !toggleSearch" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+  <button type="button" class="btn btn-sm btn-default" ng-click="open('addSchedule.html','lg')"><i class="fa fa-plus"></i></button></h3>
+</dd>
+  </dl>
+
+<dl class="row" ng-show="toggleSearch" style="margin-bottom: 13px;">
+<h3 class="display-4">
+  <dd class="col-sm-8 col-sm-offset-2">
+   <div class="input-group input-group-sm">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search notices">
+        <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="toggleSearch = !toggleSearch" type="button"><i class="fa fa-times"></i></button>
+      </span>
+      </div>
+</dd></h3>
+  </dl>
+</div>
+
+  
+ <!-- Table -->
+ <table class="table table-bordered">
+
+    <thead>
+    <tr class="weekdays">
+         <th class="weekdays" width="10%">DATE</th>
+      <th width="90%">EVENT</th>
+   
+    </tr>
+    </thead>
+  <tbody  >
+      
+     <tr ng-repeat="event in events" >
+       
+         <td ><h4 class="text-center"><span class="badge"> {{event.date | date:'MMM'}}</span></h4><h4 class="text-center">{{event.date | date:'dd'}}</h4>
+        </td>
+        <td>   <div class="media">
+    <div class="media-left">
+      <img ng-src="{{event.picUrl}}" class="media-object" style="width:100px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"> <a ui-sref="dashboard.courseDetail({courseId:m.id})">{{event.title}}</a><br>
+      <small>{{event.description | limitTo:200}}...</small></h4>
+    </div>
+  </div>
+        </td>
+         
+    </tr>
+     
+    
+    </tbody>
+  </table>
+

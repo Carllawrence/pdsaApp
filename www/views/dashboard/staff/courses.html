@@ -1,0 +1,106 @@
+
+<div class="container-fluid" style="background-color:#4ca6ff;">
+  <dl class="row" ng-hide="toggleSearch" style="margin-bottom: 0px;">
+  <dt class="col-xs-8"><h3 class="display-4">{{currentUser.department}}'s Courses</h3></dt>
+  <dd class="col-xs-4"><h3 class="display-4" style="text-align:right;">
+  <button type="button" ng-click="toggleSearch = !toggleSearch" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+  <button type="button" class="btn btn-sm btn-default" ng-click="open('addCourse.html','lg')"><i class="fa fa-plus"></i></button></h3>
+</dd>
+  </dl>
+
+<dl class="row" ng-show="toggleSearch" style="margin-bottom: 13px;">
+<h3 class="display-4">
+  <dd class="col-sm-8 col-sm-offset-2">
+   <div class="input-group input-group-sm">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search courses">
+        <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="toggleSearch = !toggleSearch" type="button"><i class="fa fa-times"></i></button>
+      </span>
+      </div>
+</dd></h3>
+  </dl>
+</div>
+
+<div>
+	
+<ul class="list-group" ng-repeat="course in courses | filter:search | filter:{department:currentUser.department} ">
+  <li class="list-group-item onlybottom">
+	    
+	   
+	   <span class="badge">LEVEL: {{course.level}}</span>
+	 
+	           
+    <div class="row">
+      <div class="col-xs-1">
+        <img ng-src="img/{{course.department}}.png" class="img-square" height="64px">
+      </div>
+      <div class="col-xs-9">
+       <a ui-sref="dashboard.courseDetail({courseId:course._id})"> <strong>{{course.title}} <span class="label label-default">{{course.length}} hours</span></strong></a> <br>
+        <span> {{course.description | limitTo: 200}}...</span>
+            
+      </div>
+    </div>
+
+  </li>
+</ul>
+
+</div>
+
+<script type="text/ng-template" id="addCourse.html">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Add Course</h3>
+   
+  </div>
+  <div class="modal-body" id="modal-body">
+    <form name="form">
+
+      <div class="form-group">
+        <label for="videoTitle">Course Title</label>
+        <input class="form-control" ng-model="course.title" id="courseTitle">
+        </div>
+        
+      <div class="form-group">
+        <label for="videoDescription">Description</label>
+        <textarea class="form-control" ng-model="course.description" id="courseDescription" rows="3"></textarea>
+      </div>
+
+<div class="row">
+	  <div class="form-group col-xs-8">
+        <label for="courseDepartment">Department</label>
+    
+		<select class="form-control" ng-model="course.department" ng-options="dept as dept.DEPARTMENT + ' | ' + dept.OPTION for dept in departments" id="courseDepartment" >
+
+</select>
+  </div>
+        
+		<div class="form-group col-sm-4">
+        <label for="courseLevel">Level</label>
+		<select class="form-control" ng-model="course.level" id="courseLevel">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+</select>
+        </div>
+</div>
+		<div class="form-group">
+        <label for="courseLength">Course Length</label>
+		<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions"  ng-model="course.length" id="inlineRadio1" value="1"> 1 Hour
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions"  ng-model="course.length" id="inlineRadio2" value="2"> 2 Hours
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions"  ng-model="course.length" id="inlineRadio3" value="3"> 3 Hours
+</label>
+        
+        </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" ng-click="submit(course)" class="btn btn-sm btn-primary">Create Course</button>
+    <button class="btn btn-sm btn-info" type="button" ng-click="close()">Cancel</button>
+
+  </div>
+  </form>
+
+</script>

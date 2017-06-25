@@ -1,0 +1,54 @@
+<div class="container-fluid" >
+
+  <div class="col-lg-6 col-lg-offset-3">
+
+	<div class="header">
+    <h2 class="text-center"><i class="fa fa-money"></i> Pay and Submit</h2>
+  </div>
+    <h5 class="text-center">Use the generated number below to add to your payslip at Bank of Kigali. Once your payment has been verified you will
+        be able to submit your application for review.</h5>
+
+    
+            <h4 class="text-center">Please add the number below to your payslip</h4>
+<h1 class="text-center"><mark> {{personalInfo.uuid}} </mark></h1>
+<p class="text-center">The Application fee is 5000 Rfw. </p>
+
+ <table class="table">
+      <thead>
+        <tr>
+          
+          <th>Payment Date</th>
+         
+          
+          <th>Reference Code</th>
+        
+          <th>Description</th>
+         
+          <th>Amount Paid</th>
+        </tr>
+      </thead>
+      <tfoot>
+      <td>--</td>
+      <td>--</td>
+      <th>Balance</th>
+      <th>{{balance | currency: 'Rwf '}}</th>
+      </tfoot>
+
+      <tbody>
+        <tr ng-repeat="pay in payments">
+          
+          <td>{{pay.dco | date}}</td>
+         
+          <td>{{pay.eve}}</td>
+         
+          <td>{{pay.lib}}</td>
+         
+          <td>{{pay.credit}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+             <button class="btn btn-success btn-lg btn-block" ng-disabled="personalInfo.status < 3" ng-click="addApplication()">Submit Application</button>
+  </div>
+</div>
+

@@ -1,0 +1,18 @@
+
+<div class="header"><h3><i class="fa fa-bar-calendar"></i> Events @IPRC East</h3></div>
+
+<div ng-repeat="event in events">
+
+<div class="row">
+  <div class="col-sm-4 col-md-4">
+    <div class="thumbnail">
+      <img ng-src="{{event.picUrl}}" alt="...">
+      <div class="caption">
+        <h3>{{event.title}}</h3>
+        <p>{{event.description}}</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

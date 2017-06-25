@@ -1,0 +1,45 @@
+
+<div class="container-fluid" style="background-color:#4ca6ff;">
+  <dl class="row" ng-hide="toggleSearch" style="margin-bottom: 0px;">
+  <dt class="col-xs-8"><h3 class="display-4">Applications</h3></dt>
+  <dd class="col-xs-4"><h3 class="display-4" style="text-align:right;">
+  <button type="button" ng-click="toggleSearch = !toggleSearch" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button></h3>
+</dd>
+  </dl>
+
+<dl class="row" ng-show="toggleSearch" style="margin-bottom: 13px;">
+<h3 class="display-4">
+  <dd class="col-sm-8 col-sm-offset-2">
+   <div class="input-group input-group-sm">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search notices">
+        <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="toggleSearch = !toggleSearch" type="button"><i class="fa fa-times"></i></button>
+      </span>
+      </div>
+</dd></h3>
+  </dl>
+</div>
+  
+  
+  <ul class="list-group" ng-repeat="app in allApplications | filter:search">
+  <li class="list-group-item onlybottom">
+     <span ng-if="app.status < 4" class="badge badge-info">In progress</span>
+  <span ng-if="app.status == 4" class="badge badge-warning">Submitted</span>
+  <span ng-if="app.status == 6" class="badge badge-success">Approved</span>
+  <span ng-if="app.status == 5" class="badge badge-danger">Rejected</span>
+  <div class="row">
+  <div class="col-lg-1">  
+  <img ng-if="app.picUrl" ng-src="{{app.picUrl}}" width="80px;"></div>
+  <div class="col-lg-6">  
+   <h4>  <a ui-sref="dashboard.applicationDetail({appIndex:allApplications.indexOf(app)})">{{app.lastname | uppercase}}, {{app.firstname || 'None'}}</a> </h4>
+   <i class="fa fa-phone"></i> {{app.tel}} <br> 
+    <i class="fa fa-envelope"></i> {{app.email}}  
+   </div>
+  </div>
+     
+  
+   
+  
+  </li>
+</ul>
+

@@ -1,0 +1,108 @@
+<ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+        <a href="" uib-popover-template="'eventPopover'" popover-class="increase-popover-width" popover-trigger="'focus'" popover-placement="bottom-right">
+            <i class="fa fa-calendar fa-lg"><sup><span class="badge">{{howManyEvents}}</span></sup></i>
+        </a>
+        <ul>
+            <script type="text/ng-template" id="eventPopover">
+           <table class="table">
+
+   
+  <tbody  >
+      
+     <tr ng-repeat="event in events">
+        <td><span class="badge"> {{event.date | date:'MMM'}}</span><h4 class="text-center">{{event.date | date:'dd'}}</h4>
+        </td>
+        <td>   <div class="media">
+    <div class="media-left">
+      <img ng-src="{{event.picUrl}}" class="media-object" style="width:100px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"> <a ui-sref="dashboard.eventDetail({eventId:event._id})">{{event.title | limitTo:25}}</a><br>
+      <small>{{event.description | limitTo:50}}...</small></h4>
+    </div>
+  </div>
+        </td>
+         
+    </tr>
+     
+    
+    </tbody>
+  </table>
+            </script>
+        </ul>
+        <!-- /.dropdown-messages -->
+    </li>
+    <li class="dropdown">
+        <a href="" uib-popover-template="'messagePopover'" popover-trigger="'focus'" popover-class="increase-popover-width" popover-placement="bottom-right">
+            <i class="fa fa-envelope fa-lg"><sup><span class="badge">{{howManyMsg}}</span></sup></i>
+        </a>
+        <ul>
+            <script type="text/ng-template" id="messagePopover">
+                <ul class="nav sidetabs top menu" ng-repeat="mail in inboxMails">
+                    <li>
+                        <a ui-sref='dashboard.mail'>
+                            
+                                <i class="fa fa-calendar fa-lg"></i> <em>{{mail.createdAt | date}}</em>
+                        
+                            <h4><i class="fa fa-user-o fa-lg"></i><strong> {{mail.fromname}}:</strong> <small> {{mail.subject | limitTo:300}}...</small>
+                            </h4>
+
+                        </a>
+                        <hr>
+                    </li>
+            
+                </ul>
+                <li>
+                    <a class="text-center" ui-sref='dashboard.mail'>
+                        <h4> <i class="fa fa-angle-right"></i> Read All Messages</h4>
+
+                    </a>
+                </li>
+            </script>
+        </ul>
+        <!-- /.dropdown-messages -->
+    </li>
+    <li class="dropdown">
+        <a href="" uib-popover-template="'noticePopover'" popover-trigger="'focus'" popover-placement="bottom-right"> <i class="fa fa-bell fa-lg"><sup><span class="badge">{{howManyNotices}}</span></sup></i>
+        </a>
+        <script type="text/ng-template" id="noticePopover">
+            <ul class="nav sidetabs top menu" ng-repeat="notice in notices">
+                <li>
+                    <a ui-sref='dashboard.notices'>
+                        <h4> <i class="fa fa-comment-o fa-lg"></i> {{notice.createdAt | date}}</h4>
+                    
+                            {{notice.message | limitTo:100}}
+
+                    </a>
+                    <hr>
+                </li>
+            </ul>
+            <li>
+                <a class="text-center" ui-sref='dashboard.notices'>
+                    <h4> <i class="fa fa-angle-right"></i> See All Notices</h4>
+
+                </a>
+            </li>
+
+        </script>
+    </li>
+    <li class="dropdown">
+        <a href="" uib-popover-template="'userPopover'" popover-trigger="'focus'" popover-placement="bottom-right">
+            <i class="fa fa-lock fa-lg"></i>
+
+        </a>
+        <script type="text/ng-template" id="userPopover">
+            <ul class="nav sidetabs top menu" ng-repeat="hmenu in headermenus">
+                <li ui-sref-active="active">
+                    <a ui-sref="{{hmenu.url}}"><i class="fa fa-{{hmenu.icon}} fa-lg icon-background"></i> {{hmenu.name}}</a>
+                </li>
+
+            </ul>
+
+        </script>
+    </li>
+    <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+</ul>

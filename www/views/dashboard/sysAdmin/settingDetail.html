@@ -1,0 +1,95 @@
+
+<div class="container-fluid" style="background-color:#4ca6ff;">
+  <dl class="row" style="margin-bottom: 0px;">
+    <dt class="col-xs-2"><h3 class="display-4"><a ui-sref="dashboard.settings"> &larr; Back</a></h3></dt>
+  <dt class="col-xs-10"><h3 class="display-4" style="text-align:right;">Settings For {{currentSettings.schoolYear}}</h3></dt>
+  </dl>
+</div>
+
+<div class="container-fluid" ng-show="!courseEdit" style="padding-top:2%;">
+<div class="alert alert-warning">
+  <strong>Warning!</strong> Changes these settings will impact the function of the entire application. Please review changes carefully before saving.
+</div>
+  <ul class="list-group">
+     <li class="list-group-item">
+      
+    <span class="icon">   <h4 class="display-4"> <a href="#" editable-text="currentSettings.schoolYear" onaftersave="updateSettings(currentSettings)">{{ currentSettings.schoolYear || 'not set' }}</a></h4></span>
+   <h4 class="display-4"> School Year:</h4>
+  </li>
+
+   <ul class="list-group">
+  
+   <li class="list-group-item">
+      
+    <span class="icon">   <h4 class="display-4"> <a href="#" editable-bsdate="currentSettings.startDate"
+              e-is-open="opened.$data"
+              e-ng-click="open($event,'$data')"
+         
+              e-datepicker-popup="dd-MMMM-yyyy" onaftersave="updateSettings(currentSettings)">
+    {{ (currentSettings.startDate | date:"dd/MM/yyyy") || 'not set' }} 
+  </a></h4></span>
+   <h4 class="display-4">Start Date:</h4>
+  </li>
+
+     <li class="list-group-item">
+      
+    <span class="icon">   <h4 class="display-4"> <a href="#" editable-bsdate="currentSettings.endDate"
+              e-is-open="opened.$data"
+              e-ng-click="open($event,'$data')"
+              e-datepicker-popup="dd-MMMM-yyyy" onaftersave="updateSettings(currentSettings)">
+    {{ (currentSettings.endDate | date:"dd/MM/yyyy") || 'not set' }} 
+  </a></h4></span>
+   <h4 class="display-4">End Date:</h4>
+  </li>
+
+  <li class="list-group-item">
+      
+    <span class="icon">   <h4 class="display-4"> <a href="#" editable-bsdate="currentSettings.regStart"
+              e-is-open="opened.$data"
+              e-ng-click="open($event,'$data')"
+              e-datepicker-popup="dd-MMMM-yyyy" onaftersave="updateSettings(currentSettings)">
+    {{ (currentSettings.regStart | date:"dd/MM/yyyy") || 'not set' }} 
+  </a></h4></span>
+   <h4 class="display-4">Registration Start:</h4>
+  </li>
+
+  <li class="list-group-item">
+      
+    <span class="icon">   <h4 class="display-4"> <a href="#" editable-bsdate="currentSettings.regEnd"
+              e-is-open="opened.$data"
+              e-ng-click="open($event,'$data')"
+              e-datepicker-popup="dd-MMMM-yyyy" onaftersave="updateSettings(currentSettings)">
+    {{ (currentSettings.regEnd | date:"dd/MM/yyyy") || 'not set' }} 
+  </a></h4></span>
+   <h4 class="display-4">Registration End:</h4>
+  </li>
+
+   <li class="list-group-item">
+      
+    <span class="icon">   <h4 class="display-4"> <a href="#" editable-bsdate="currentSettings.semesterStart"
+              e-is-open="opened.$data"
+              e-ng-click="open($event,'$data')"
+              e-datepicker-popup="dd-MMMM-yyyy" onaftersave="updateSettings(currentSettings)">
+    {{ (currentSettings.semesterStart | date:"dd/MM/yyyy") || 'not set' }} 
+  </a></h4></span>
+   <h4 class="display-4">Semester One Start:</h4>
+  </li>
+ 
+  <li class="list-group-item">
+      
+    <span class="icon">   <h4 class="display-4"> <a href="#" editable-bsdate="currentSettings.semesterEnd"
+              e-is-open="opened.$data"
+              e-ng-click="open($event,'$data')"
+              e-datepicker-popup="dd-MMMM-yyyy" onaftersave="updateSettings(currentSettings)">
+    {{ (currentSettings.semesterEnd | date:"dd/MM/yyyy") || 'not set' }} 
+  </a></h4></span>
+   <h4 class="display-4">Semester One End:</h4>
+  </li> 
+</ul>
+</div>
+
+
+
+
+    
+

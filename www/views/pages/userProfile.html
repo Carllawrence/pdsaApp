@@ -1,0 +1,97 @@
+
+<div class="container-fluid" style="background-color:#4ca6ff;">
+  <dl class="row" ng-hide="toggleSearch" style="margin-bottom: 0px;">
+  <dt class="col-xs-8"><h3 class="display-4">{{currentUser.firstname}}'s Profile</h3></dt>
+  <dd class="col-xs-4"><h3 class="display-4" style="text-align:right;">
+  <button type="button" ng-click="editableForm.$show()" ng-show="!editableForm.$visible" class="btn btn-sm btn-default"><i class="fa fa-pencil"></i></button>
+ </h3>
+</dd>
+  </dl>
+
+</div>
+
+
+
+    <div class="media" style="padding-top:20px;">
+    
+
+      
+        <div class="col-xs-4">
+            
+  <div class="media-left">
+    
+      <img class="media-object thumb" ng-src="/{{currentUser.picUrl}}" alt="Profile Picture">
+
+  </div>
+  <div class="media-body">
+       
+    <h3 class="media-heading">{{currentUser.lastname | uppercase}} </h3>
+    <h4>{{currentUser.firstname}}</h4>
+       <h4><strong>Reg#:</strong> {{currentUser.regNumber}}</h4>
+   <hr class="my-2">
+
+      </div>
+   
+   </div>
+
+<div class="col-xs-6">
+
+   <form editable-form name="editableForm" onaftersave="saveUser(personalInfo)">
+ 
+
+<div>
+<strong>Phone</strong><br>
+ <span editable-tel="personalInfo.address.telephone" e-placeholder="07x-xxx-xxxx">
+
+ <address>
+  
+ <abbr title="Phone">P:</abbr> {{personalInfo.address.telephone || 'incomplete' }}
+</address>
+</span> </div>
+
+     <div> <strong>Address</strong><br> <span editable-text="personalInfo.address"  e-style="width: 200%" e-required e-uib-typeahead="add as add.Village + ' in (' + add.Province + ',' + add.Sector + ',' + add.Cellule + ')' for add in rwandaAddress |filter: {Village: $viewValue} | orderBy: Code_Vill | limitTo:10">
+
+
+ <address>
+ 
+ <abbr title="Province">Province:</abbr>{{personalInfo.address.Province}}<br>
+   <abbr title="Province">Sector:</abbr>{{personalInfo.address.Sector}}<br>
+   <abbr title="Province">Cell:</abbr> {{personalInfo.address.Cellule}}<br>
+     <abbr title="Province">Village:</abbr>{{personalInfo.address.Village}}
+  
+</address>
+  </span>
+
+        </div> 
+  
+
+    <div>
+      <!-- button to show form -->
+     
+      <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+      <br>
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          <i class="fa fa-floppy-o"></i>
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          <i class="fa fa-ban"></i>
+        </button>
+      </span>
+    </div>
+  </form>  </div>  
+
+ 
+  
+
+
+
+			
+
+
+	
+    
+
+
+
+

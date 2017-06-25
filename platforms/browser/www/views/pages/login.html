@@ -1,0 +1,158 @@
+<div class="container-fluid" style="background-color: white;">
+    <div ng-show="loginError" class="alert alert-danger"><strong>Login Failed:</strong> {{loginError}}</div>
+    <div ng-show="message" class="alert alert-info"><strong>Login Successful:</strong> {{message}}</div>
+    <div class="row" style="padding-top: 2%;">
+
+        <div class="col-md-4 col-md-offset-4">
+
+            <h4 class="text-center">
+                <img src="img/logo.jpg" alt="IPRC logo" class="center-block" width="40%">
+            </h4>
+
+            <uib-tabset active="active" justified="false">
+                <uib-tab index="0">
+                    <uib-tab-heading>
+                        <h5><i class="fa fa-arrow-right"></i> ACCESS</h5>
+                    </uib-tab-heading>
+                    <form role="form" name="loginForm" ng-submit="login(loginemail, loginpassword, rememberMe)" novalidate>
+                        <fieldset>
+
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="E-mail (username)" name="loginemail" ng-model="loginemail" type="email" tooltip-trigger="'none'"
+                                    uib-tooltip-template="'emailTooltipTemplate.html'" tooltip-is-open="loginForm.loginemail.$dirty && loginForm.loginemail.$invalid"
+                                    tooltip-placement="top" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" ng-model="loginpassword" name="loginpassword" type="password" tooltip-trigger="'none'"
+                                    uib-tooltip-template="'passTooltipTemplate.html'" tooltip-is-open="loginForm.loginpassword.$dirty && loginForm.loginpassword.$invalid"
+                                    tooltip-placement="bottom" required maxlength="15" minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" ng-model="rememberMe" type="checkbox" value="1">Keep me logged in (30 days)
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="loginForm.$invalid"><i class="fa fa-lock fa-lg"></i> SIGN IN</button>
+                            <br><a ui-sref="forgot">I forgot my password.</a>
+                        </fieldset>
+                    </form>
+                </uib-tab>
+                <uib-tab index="1">
+                    <uib-tab-heading>
+                        <h5><i class="fa fa-plus"></i> APPLY</h5>
+                    </uib-tab-heading>
+                    <form name="registerForm" ng-submit="register(username, firstname, lastname, password)" novalidate>
+                        <fieldset>
+                            <div ng-show="RegErrorMessage" class="alert alert-danger">{{RegErrorMessage}}</div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="E-mail (username)" name="username" ng-model="username" type="email" required>
+                                <span style="color:red" ng-show="registerForm.username.$dirty && registerForm.username.$invalid">
+					<span ng-show="registerForm.username.$error.required">Email is required.</span>
+                                <span ng-show="registerForm.username.$error.email">Invalid email address.</span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="First Name" name="firstname" ng-model="firstname" type="text" required>
+                                <span style="color:red" ng-show="registerForm.firstname.$dirty && registerForm.firstname.$invalid">
+					<span ng-show="registerForm.username.$error.required">First name is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Last Name" name="lastname" ng-model="lastname" type="text" required>
+                                <span style="color:red" ng-show="registerForm.lastname.$dirty && registerForm.lastname.$invalid">
+					<span ng-show="registerForm.username.$error.required">Last name is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" ng-model="password" name="password" type="password" required maxlength="15"
+                                    minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                                <div style="color:red" ng-messages="registerForm.password.$dirty && registerForm.password.$error" role="alert">
+                                    <div ng-message="required">Please enter a password.</div>
+                                    <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                    <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                    <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="registerForm.$invalid">Create Account</button>
+                        </fieldset>
+                    </form>
+                </uib-tab>
+            </uib-tabset>
+            <div class="row">
+                <p class="col-xs-6 text-left text-muted"><a href="" ng-click="open('termsConditions.html')"><small>Terms of Use</small></a></p>
+                <p class="col-xs-6 text-right text-muted"><a href="" ng-click="open('privacyPolicy.html')"><small>Privacy Policy</small></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="termsConditions.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Terms and Conditions</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <h5> IPRC East Website Terms of Service ("Agreement")</h5>
+        This Agreement was last modified on June 1, 2017. Please read these Terms of Service completely before using this application, Adoptitude Research (Ower Dr. Carl Lawrence). 
+        This Agreement documents the legally binding terms and conditions attached to the use of the Stars Application. By using the 
+        application in any way, viewing or adding your own content, you are agreeing to be bound by these Terms of Service.
+        Intellectual Property The Site and all of its original content are the sole property of Adoptitude Research and are,
+        as such, fully protected by the appropriate international copyright and other intellectual property rights laws.
+        
+        Adoptitude Research reserves the right to terminate your access, without any advance notice.
+        Links to Other Websites Our Site does contain a number of links to other websites and online resources that are not
+        owned or controlled by Adoptitude Research. Adoptitude Research has no control over, and therefore cannot assume responsibility
+        for, the content or general practices of any of these third party sites and/or services. Therefore, we strongly advise
+        you to read the entire terms and conditions and privacy policy of any site that you visit as a result of following
+        a link that is posted. 
+        
+        This Agreement is governed in accordance with the laws of the United States. Adoptitude Research reserves the right to modify these Terms of Service at
+        any time. We do so by posting and drawing attention to the updated terms on the Site. Your decision to continue to
+        visit and make use of the Site after such changes have been made constitutes your formal acceptance of the new Terms
+        of Service. Therefore, we ask that you check and review this Agreement for such changes on an occasional basis. Should
+        you not agree to any provision of this Agreement or any changes we make to this Agreement, we ask and advise that
+        you do not use or continue to access the application. Contact Us If you have any questions
+        about this Agreement, please feel free to contact us at carl.lawrence@adoptitude.com
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="close()">Close</button>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="privacyPolicy.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Privacy Policy</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        This privacy policy sets out how “IPRC East” uses and protects any information that you give “IPRC East” when you use this
+        website. “IPRC East” is committed to ensuring that your privacy is protected. Should we ask you to provide
+        certain information by which you can be identified when using this web application, then you can be assured that it will
+        only be used in accordance with this privacy statement. “IPRC East” may change this policy from time to time
+        by updating this page. You should check this page from time to time to ensure that you are happy with any changes.
+        This policy is effective from August,1 2017. We may collect the following information: name and academic history, job history,
+        contact information including email, address, demographic information, preferences and interests other
+        information relevant to surveys and/or offers. We require this information to understand your needs and provide you with a better service.
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="close()">Close</button>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="emailTooltipTemplate.html">
+
+    <div style="color:yellow" ng-messages="loginForm.loginemail.$dirty && loginForm.loginemail.$error" role="alert">
+        <div ng-message="required">Please enter username</div>
+        <div ng-message="email">Must be a valid email address.</div>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="passTooltipTemplate.html">
+    <div style="color:yellow" ng-messages="loginForm.loginpassword.$dirty && loginForm.loginpassword.$error" role="alert">
+        <div ng-message="required">Please enter a password.</div>
+        <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+        <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+        <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+    </div>
+</script>

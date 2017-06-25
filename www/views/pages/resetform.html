@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Please create a new password.</h2>
+                </div>
+                <div class="panel-body">
+
+                    <form name="resetForm" role="form">
+  <div ng-show="resetMsgSuccess" class="alert alert-success"><strong>Success!</strong>{{resetMsgSuccess}}</div>
+    <div ng-show="resetMsgFail" class="alert alert-danger"><strong>Failed!</strong>{{resetMsgFail}}</div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="New password" ng-model="formData.password" name="password" type="password" required
+                                maxlength="15" minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                            <div style="color:red" ng-messages="resetForm.password.$dirty && resetForm.password.$error" role="alert">
+                                <div ng-message="required">Please enter a password.</div>
+                                <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Confirm new password" ng-model="formData.password2" name="password2" type="password"
+                                required maxlength="15" minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                            <div style="color:red" ng-messages="resetForm.password2.$dirty && resetForm.password2.$error" role="alert">
+                                <div ng-message="required">Please enter a password.</div>
+                                <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" ng-hide=true ng-model="formData.uuid" id="uuid" class="form-control" value="{{uuid}}" />
+                        </div>
+
+
+                        <button class="btn btn-default btn-success btn-block" type="submit" ng-click="reset(formData)" ng-disabled="resetForm.$invalid">Change my password</button>
+                    </form>
+                  
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

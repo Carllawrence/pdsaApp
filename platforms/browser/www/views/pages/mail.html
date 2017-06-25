@@ -1,0 +1,107 @@
+<div class="container-fluid" style="background-color:#4ca6ff;">
+  <dl class="row" ng-hide="toggleSearch" style="margin-bottom: 0px;">
+  <dt class="col-xs-8"><h3 class="display-4">{{currentUser.firstname}}'s Internal Mail</h3></dt>
+  <dd class="col-xs-4"><h3 class="display-4" style="text-align:right;">
+  </button> <button type="button" class="btn btn-sm btn-default" ng-click="open('newMessage.html','lg')"><i class="fa fa-envelope"> Compose</i></button></h3>
+</dd>
+  </dl>
+
+</div>
+
+
+
+<div class="container-fluid">
+<div class="row" style="padding-top:10px;">
+  <div class="col-md-3" style="border-right: solid 1px; height:200px;" >
+
+<div class="list-group" >
+
+  <button type="button" ng-click="changeto = 'inbox'" class="list-group-item onlybottom" ng-class="{selected: changeto ==='inbox'} "  >
+      <span class="badge">{{howManyMsg}}</span>
+<i class="fa fa-envelope"></i> Inbox
+  </button>
+  <button type="button" ng-click="changeto = 'sent'" class="list-group-item onlybottom" ng-class="{selected: changeto ==='sent'} "  >  <span class="badge">{{howManySentMsg}}</span>
+ <i class="fa fa-arrow-right"></i>  Sent</button>
+
+</div>
+</div>
+
+<div class="col-xs-9">
+  
+ <div ng-show="changeto ==='inbox'" ng-repeat="mail in inboxMails">
+  
+<div class="list-group">
+  <a href="" class="list-group-item onlybottom">
+    <span class="badge">{{mail.createdAt | date}}  </span>
+   
+    <h4 class="list-group-item-heading"><span class="label label-success">{{mail.fromname | limitTo:1}}</span> <strong>{{mail.fromname}} </strong>  &#x21FE; <ins> {{mail.subject}}</ins></h4>
+    <small class="list-group-item-text">{{mail.message}}</small>
+    <button class="btn btn-sm btn-default" ng-click="deleteInboxMsg($index)" style="float:right;"><i class="fa fa-trash"></i></button>
+  </a>
+   
+</div>
+
+     
+      </div>
+
+
+
+<div ng-show="changeto === 'sent'" ng-repeat="mail in sendMails">
+  <div class="list-group">
+  <a href="#" class="list-group-item onlybottom">
+    <span class="badge">{{mail.createdAt | date}}</span>
+    <h4 class="list-group-item-heading"><span class="label label-success">{{mail.toname | limitTo:1}}</span> <strong>{{mail.toname}} </strong> &#x21FD; <ins> {{mail.subject}}</ins></h4>
+    <small class="list-group-item-text">{{mail.message}}</small>
+  </a>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+<script type="text/ng-template" id="newMessage.html">
+ <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">New Message</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+ <form ng-submit="sendMessage(mail)">
+
+      <div class="form-group">
+        <label for="to:"> To:</label>
+        <input type="text" ng-model="mail.to" placeholder="recipient" uib-typeahead="name as name.username + '(' + name.firstname + ',' + name.lastname +')' for name in users | filter: {username: $viewValue} | limitTo:10"
+          typeahead-loading="loadingUsers" typeahead-no-results="noResults" class="form-control">
+        <i ng-show="loadingUsers" class="glyphicon glyphicon-refresh"></i>
+      </div>
+
+      <div class="form-group">
+        <label for="subject"> Subject</label>
+        <input class="form-control" ng-model="mail.subject" id="subject">
+
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" ng-model="mail.message" id="message" rows="3"></textarea>
+      </div>
+</div>
+<div class="modal-footer">
+      <button type="submit" ng-click="sendMessage(mail)" class="btn btn-sm btn-primary">Send</button>
+      <button class="btn btn-sm btn-info" type="button" ng-click="close()">Cancel</button>
+</div>
+    </form>
+
+</script>
+
+    
+  
+
+
+
+
+
+
+        
+    
+     

@@ -1,0 +1,35 @@
+
+
+    <!-- Navigation -->
+
+    <header></header>
+    <!-- /.navbar-top-links -->
+
+ <div id="mySidenav" class="sidenav">
+
+    <p class="text-center" ng-hide="collapse"> <img ng-src="{{currentUser.picUrl}}" class="img-circle side-img"><br>Signed in as: <a ui-sref="dashboard.userProfile">{{currentUser.firstname}}
+        </a>
+      </p>
+  
+      <h2 ng-show="collapse" class="menu-text">MENU</h2>
+    <ul class="nav sidetabs menu" ng-repeat="menu in menus">
+      <li ui-sref-active="active">
+        <a ui-sref="{{menu.url}}" ng-click="check()"><i class="fa fa-{{menu.icon}} fa-lg icon-background"></i> {{menu.name | uppercase}}</a>
+      </li>
+    </ul>
+  </div>
+    <!-- /.navbar-static-side -->
+     
+
+      
+    <div id="main" class="page-wrapper">
+
+        <div ui-view><h1>loading...</h1></div>
+      
+ 
+    </div>
+    <!-- /#page-wrapper -->
+  
+ 
+
+  

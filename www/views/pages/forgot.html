@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Password Reset</h2>
+                </div>
+                <div class="panel-body">
+                    <p> Please enter the email associated with your account</p>
+                    <form name="forgotForm" role="form">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Username (email)" name="email" ng-model="formData.username" type="email" required
+                                autofocus>
+                            <div style="color:red" ng-messages="forgotForm.email.$dirty && forgotForm.email.$error" role="alert">
+                                <div ng-message="required">Please enter a password.</div>
+                                <div ng-message="email">Must be a valid email address.</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block" type="submit" ng-click="forgot()" ng-disabled="forgotForm.$invalid">Send me my reset email</button>
+                        <div class="alert alert-danger" ng-show="msg">{{msg}}</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

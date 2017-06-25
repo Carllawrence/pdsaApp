@@ -1,0 +1,155 @@
+<applicationheader></applicationheader>
+<div style="padding-top: 80px;"></div>
+<div class="jumbotron" ng-hide="collapseApp === true">
+  <div class="row">
+    
+    <div class="col-xs-5">
+      <h1 class="text-center" style="color: darkblue;">World Class Training!</h1>
+      <h2 class="text-center" style="color:green;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br> sit amet, consectetur adipiscing elit.  sit amet, consectetur adipiscing elit.   </h2>
+
+    </div>
+         <div class="col-xs-4" >
+             <p>If you have already started your application please <a ui-sref="login">sign in</a> to continue.</p>
+                    <form name="registerForm" ng-submit="register(username, firstname, lastname, password)" novalidate>
+                        <fieldset>
+                            <div ng-show="RegErrorMessage" class="alert alert-danger">{{RegErrorMessage}}</div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="E-mail (username)" name="username" ng-model="username" type="email" required>
+                                <span style="color:red" ng-show="registerForm.username.$dirty && registerForm.username.$invalid">
+					<span ng-show="registerForm.username.$error.required">Email is required.</span>
+                                <span ng-show="registerForm.username.$error.email">Invalid email address.</span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="First Name" name="firstname" ng-model="firstname" type="text" required>
+                                <span style="color:red" ng-show="registerForm.firstname.$dirty && registerForm.firstname.$invalid">
+					<span ng-show="registerForm.username.$error.required">First name is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Last Name" name="lastname" ng-model="lastname" type="text" required>
+                                <span style="color:red" ng-show="registerForm.lastname.$dirty && registerForm.lastname.$invalid">
+					<span ng-show="registerForm.username.$error.required">Last name is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" ng-model="password" name="password" type="password" required maxlength="15"
+                                    minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                                <div style="color:red" ng-messages="registerForm.password.$dirty && registerForm.password.$error" role="alert">
+                                    <div ng-message="required">Please enter a password.</div>
+                                    <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                    <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                    <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-primary" ng-disabled="registerForm.$invalid">Start your application!</button>
+                        </fieldset>
+                    </form>
+         </div>
+    
+     
+
+    <p class="col-xs-3"><img src="/img/obama.png" width="100%"></p>
+  </div>
+</div>
+
+<div class="container" style="padding-bottom:10px;">
+  <h1 class="text-center">Student Application Process Overview</h1>
+  <wizard on-finish="finishedWizard()" indicators-position='top' edit-mode='false'>
+    <wz-step wz-title="Complete Form">
+
+      <p>
+        <h3>Complete IPRC East Application Form </h3>et nunc mattis sem pretium congue a sit amet tellus. Mauris quis ornare
+        mi. Phasellus dapibus porta tortor, quis tristique est. Phasellus hendrerit, nibh sed tincidunt pellentesque, ligula
+        augue egestas est, eu commodo risus urna quis enim. Vivamus lorem nisl, aliquet eu neque tincidunt, blandit ornare
+        lectus. Etiam ac turpis sapien. Proin fringilla sed urna vel tristique. Suspendisse ipsum elit, accumsan eu lorem
+        at, ultricies interdum nunc. Aenean non leo ante. In ultricies metus dui, eget semper ligula congue sed. Aenean rhoncus
+        tortor placerat, rutrum dolor nec, scelerisque turpis. Vestibulum lacinia lacinia ante cursus ullamcorper. Mauris
+        in nulla neque. Etiam condimentum dui nibh, et commodo eros efficitur dapibus.</p>
+      <p class="text-right"><input class="btn btn-info" type="submit" wz-next value="Start" /></p>
+    </wz-step>
+    <wz-step wz-title="Upload Documents">
+
+      <p>
+        <h3>Upload your relevant documents </h3>et nunc mattis sem pretium congue a sit amet tellus. Mauris quis ornare mi. Phasellus
+        dapibus porta tortor, quis tristique est. Phasellus hendrerit, nibh sed tincidunt pellentesque, ligula augue egestas
+        est, eu commodo risus urna quis enim. Vivamus lorem nisl, aliquet eu neque tincidunt, blandit ornare lectus. Etiam
+        ac turpis sapien. Proin fringilla sed urna vel tristique. Suspendisse ipsum elit, accumsan eu lorem at, ultricies
+        interdum nunc. Aenean non leo ante. In ultricies metus dui, eget semper ligula congue sed. Aenean rhoncus tortor
+        placerat, rutrum dolor nec, scelerisque turpis. Vestibulum lacinia lacinia ante cursus ullamcorper. Mauris in nulla
+        neque. Etiam condimentum dui nibh, et commodo eros efficitur dapibus.</p>
+      <p class="text-right"> <input class="btn btn-info" type="submit" wz-next value="Next" /></p>
+    </wz-step>
+       <wz-step wz-title="Pay Fee">
+
+      <p>
+        <h3>Pay application fee.</h3>et nunc mattis sem pretium congue a sit amet tellus. Mauris quis ornare mi. Phasellus
+        dapibus porta tortor, quis tristique est. Phasellus hendrerit, nibh sed tincidunt pellentesque, ligula augue egestas
+        est, eu commodo risus urna quis enim. Vivamus lorem nisl, aliquet eu neque tincidunt, blandit ornare lectus. Etiam
+        ac turpis sapien. Proin fringilla sed urna vel tristique. Suspendisse ipsum elit, accumsan eu lorem at, ultricies
+        interdum nunc. Aenean non leo ante. In ultricies metus dui, eget semper ligula congue sed. Aenean rhoncus tortor
+        placerat, rutrum dolor nec, scelerisque turpis. Vestibulum lacinia lacinia ante cursus ullamcorper. Mauris in nulla
+        neque. Etiam condimentum dui nibh, et commodo eros efficitur dapibus.</p>
+      <p class="text-right"> <input class="btn btn-info" type="submit" wz-next value="Next" /></p>
+    </wz-step>
+    <wz-step wz-title="Submit">
+
+      <p>
+        <h3>Play your application fee and submit</h3>et nunc mattis sem pretium congue a sit amet tellus. Mauris quis ornare
+        mi. Phasellus dapibus porta tortor, quis tristique est. Phasellus hendrerit, nibh sed tincidunt pellentesque, ligula
+        augue egestas est, eu commodo risus urna quis enim. Vivamus lorem nisl, aliquet eu neque tincidunt, blandit ornare
+        lectus. Etiam ac turpis sapien. Proin fringilla sed urna vel tristique. Suspendisse ipsum elit, accumsan eu lorem
+        at, ultricies interdum nunc. Aenean non leo ante. In ultricies metus dui, eget semper ligula congue sed. Aenean rhoncus
+        tortor placerat, rutrum dolor nec, scelerisque turpis. Vestibulum lacinia lacinia ante cursus ullamcorper. Mauris
+        in nulla neque. Etiam condimentum dui nibh, et commodo eros efficitur dapibus.</p>
+      <p class="text-right"> <input class="btn btn-info" type="submit" wz-next value="That's it" /></p>
+    </wz-step>
+  </wizard>
+</div>
+
+<div class="container-fluid" style="background-color: lightblue; height: 400px; overflow: hidden; ">
+  <p class="col-xs-4"><img src="/img/africanstudent.png" width="80%"></p>
+  <p class="col-xs-8">
+    <h1>Student Life</h1> <h3>et nunc mattis sem pretium congue a sit amet tellus. Mauris quis ornare mi. Phasellus dapibus porta
+    tortor, quis tristique est. Phasellus hendrerit, nibh sed tincidunt pellentesque, ligula augue egestas est, eu commodo
+    risus urna quis enim. Vestibulum lacinia lacinia ante cursus ullamcorper. Mauris in nulla neque. Vivamus lorem nisl,
+    aliquet eu neque tincidunt, blandit ornare lectus. Etiam ac turpis sapien. Proin fringilla sed urna vel tristique. Suspendisse
+    ipsum elit, accumsan eu lorem at, ultricies interdum nunc. Aenean non leo ante. </h3></p>
+</div>
+
+<div class="container-fluid" style="background-color: #fee33a; height: 400px; overflow: hidden; ">
+  <h1>Academics</h1>
+  <h3>et nunc mattis sem pretium congue a sit amet tellus. Etiam condimentum dui nibh, et commodo eros efficitur dapibus.Etiam
+    condimentum dui nibh, et commodo eros efficitur dapibus.Etiam condimentum dui nibh, et commodo eros efficitur dapibus.</h3>
+  <p class="col-xs-2">
+    <img src="/img/information technology.png" width="50%"><br>Information<br>Technology </p>
+  
+  <p class="col-xs-2"><img src="/img/carpentry.png" width="50%"><br>Carpentry</p>
+  <p class="col-xs-2"><img src="/img/hospitality.png" width="50%"><br>Hospitality</p>
+  <p class="col-xs-2"><img src="/img/CIVIL ENGINEERING.png" width="50%"><br>Construction</p>
+  <p class="col-xs-2"><img src="/img/MECHANICAL ENGINEERING.png" width="50%"><br>Mechanical<br>Engineering</p>
+  <p class="col-xs-2"><img src="/img/electric.png" width="50%"><br>Electrical<br>Engineering</p>
+
+</div>
+
+<div class="container-fluid" style=" background: url(/img/hosp.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; height: 400px; overflow: hidden; ">
+    <div class="jumbotron" style=" background:transparent">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h1 class="text-center" style="color:#fee33a;">Amazing Facilities!</h1>
+      <h2 class="text-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus placerat fringilla dolor vitae ornare.
+        <p> <a class="btn btn-default btn-lg" href="iprceast.ac.rw" role="button">Learn More</a></p>
+      </h2>
+
+    </div>
+  
+  </div></div>
+</div>
+
+<div class="container" style="height: 200px; overflow: hidden; ">
+
+ 
+  <p>  <h1>Keep in touch!</h1><h1><i class="fa fa-google fa-lg"></i>&nbsp&nbsp<i class="fa fa-facebook fa-lg"></i>&nbsp&nbsp<i class="fa fa-twitter fa-lg"></i></h1> </p>
+
+
+
+</div>

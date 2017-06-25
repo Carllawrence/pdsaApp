@@ -1,0 +1,187 @@
+<div class="container-fluid" style="background-color:#4ca6ff;">
+  <dl class="row" ng-hide="toggleSearch" style="margin-bottom: 0px;">
+  <dt class="col-xs-8"><h3 class="display-4">User Management</h3></dt>
+  <dd class="col-xs-4"><h3 class="display-4" style="text-align:right;">
+   <button type="button" ng-click="toggleSearch = !toggleSearch" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button> <button type="button" class="btn btn-sm btn-default" ng-click="open('createUser.html','lg')"><i class="fa fa-plus"></i></button></h3>
+</dd>
+  </dl>
+
+<dl class="row" ng-show="toggleSearch" style="margin-bottom: 13px;">
+<h3 class="display-4">
+  <dd class="col-sm-8 col-sm-offset-2">
+   <div class="input-group input-group-sm">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search users">
+        <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="toggleSearch = !toggleSearch" type="button"><i class="fa fa-times"></i></button>
+      </span>
+      </div>
+</dd></h3>
+  </dl>
+</div>
+
+<ul class="list-group" ng-repeat="(id, user) in users | filter:search ">
+  <li class="list-group-item" style="border-top:none;">
+    <div class="row">
+      <div class="col-xs-1">
+        <img ng-src="{{user.picUrl}}" class="img-square" width="100%">
+      </div>
+      <div class="col-xs-9">
+        <span editable-text="user.firstname" e-name="firstname" e-form="rowform" onbeforesave="checkName($data, user.id)">
+          {{ user.firstname || 'None' }}
+        </span>
+        <span editable-text="user.lastname" e-name="lastname" e-form="rowform" onbeforesave="checkName($data, user.id)">
+          {{ user.lastname | uppercase}}
+        </span>
+        <br>
+        <span editable-text="user.username" e-name="username" e-form="rowform" onbeforesave="checkName($data, user.id)">
+          {{ user.username || 'None' }}
+        </span>
+        <br>
+        <span class="badge" editable-text="user.status" e-name="status" e-form="rowform" onbeforesave="checkName($data, user.id)">
+          {{ user.status || 'Applicant' }}
+        </span>
+      </div>
+
+      <div class="col-xs-2">
+        <form editable-form name="rowform" onbeforesave="saveUser($data, user._id)" ng-show="rowform.$visible" class="form-buttons form-inline"
+          shown="inserted == user">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-sm btn-primary">
+            <i class="fa fa-floppy-o"></i>
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-sm btn-default">
+            <i class="fa fa-ban"></i>
+          </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible" style="float:right;"> 
+          <button type="button" class="btn btn-sm btn-primary" ng-click="rowform.$show()"><i class="fa fa-pencil"></i></button>
+          <button type="button" class="btn btn-sm btn-danger" ng-click="open('delUser.html','sm',user._id, user.username)"><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </li>
+</ul>
+
+
+
+
+
+<script type="text/ng-template" id="delUser.html">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Alert!</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <h5> Are you sure you want to delete <strong> {{username}}</strong>?</h5>
+
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-sm btn-danger" type="button" ng-click="removeUser($index)">Confirm Delete</button>
+    <button class="btn btn-sm btn-info" type="button" ng-click="close()">Cancel</button>
+
+  </div>
+</script>
+
+<script type="text/ng-template" id="createUser.html">
+
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Create New User</h3>
+     <h5>Upload progress</h5>
+     <div><uib-progressbar value="progressPercentage"></uib-progressbar></div>
+  </div>
+  <div class="modal-body" id="modal-body">
+
+    <form name="form" ng-submit="addUser(newUser)">
+      <div class="form-group row">
+        <label for="example-text-input" class="col-xs-2 col-form-label">First Name</label>
+        <div class="col-xs-4">
+          <input class="form-control" type="text" ng-model="newUser.firstname" id="example-text-input">
+        </div>
+
+        <div class="form-group">
+          <label for="example-search-input" class="col-xs-2 col-form-label">Last Name</label>
+          <div class="col-xs-4">
+            <input class="form-control" type="search" ng-model="newUser.lastname" id="example-search-input">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+        <div class="col-xs-4">
+          <input class="form-control" type="email" ng-model="newUser.email" id="example-email-input">
+        </div>
+
+
+        <div class="form-group">
+          <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
+          <div class="col-xs-4">
+            <input class="form-control" type="tel" ng-model="newUser.telephone" id="example-tel-input">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+  <div class="form-group col-xs-10">
+        <label for="courseDepartment">Department</label>
+    
+		<select class="form-control" ng-model="newUser.department" ng-options="dept as dept.DEPARTMENT for dept in deptOptions" id="courseDepartment" >
+
+</select>
+  </div>
+
+        
+      </div>
+      <div class="page-header">
+        <h4><small>Access and Security</small></h4>
+      </div>
+      <div class="form-group row">
+        <label for="example-password-input" class="col-xs-2 col-form-label">Password
+           <span tooltip-placement="top" uib-tooltip="
+           Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters,
+            or emoji."> <i class="fa fa-info-circle"></i>
+           
+          </span>
+        </label>
+        <div class="col-xs-4">
+          <input class="form-control" type="password" ng-model="newUser.password" id="example-password-input">
+         
+        </div>
+        <div class="form-group">
+          <label for="example-password-input" class="col-xs-2 col-form-label">Access
+            <span tooltip-placement="top" uib-tooltip=" Student = 0, Admin = 3 Super User = 5.">
+             <i class="fa fa-info-circle"></i>
+            </span>
+          </label>
+          <div class="col-xs-4">
+            <select class="form-control" ng-model="newUser.status">
+  <option selected>Select Access Level</option>
+  <option value="2">Existing Student</option>
+  <option value="4">Lecturer</option>
+  <option value="3">Administrator</option>
+ 
+</select>
+            
+          </div>
+        </div>
+      </div>
+     
+   <div class="form-group">
+       <div class="btn btn-primary" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+    ngf-accept="'image/*'" ngf-max-size="3MB" ngf-min-height="100"
+    ngf-resize="{width: 100, height: 100}">Select Picture</div>
+  
+   <img ng-if="file.name" ng-src='{{file.name}}' width="30px;">
+    </div>
+  </div>
+
+    <div class="modal-footer">
+    <button type="submit" ng-click="addUser(newUser, file)" class="btn btn-success btn-sm">Create</button>
+    <button class="btn btn-sm btn-info" type="button" ng-click="close()">Cancel</button>
+
+  </div>
+   </form>
+</script>

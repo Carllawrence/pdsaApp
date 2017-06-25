@@ -1,0 +1,84 @@
+<div class="col-lg-8 col-lg-offset-2" >
+
+
+ <div class="header"><h3><i class="fa fa-files-o"></i> Upload Supporting Documents</h3></div>
+
+<div class="alert alert-danger" ng-if="personalInfo.docs.length < 3">
+  <strong>Wait your not done!</strong> There needs to be a minimum of three files for your application.
+</div>
+
+
+<div class="alert alert-warning" ng-show="fileUploadSizeMsg">
+  <strong>Hold on!</strong> File {{filename}} is too large. Maximum size is 5mb.
+</div>
+
+<div class="row">
+{{personalInfo.picUrl}}
+  <div class="col-lg-12">
+    <label>Select document type from the list below (select one):</label>
+    <div class="input-group input-group-sm">
+
+      <select class="form-control" ng-model="title">
+  <option>Transcripts of the last three years</option>
+  <option>National identity card</option>
+  <option>Coloured passport size photo</option>
+  <option>Itorero/ Ingando certificate</option>
+  <option>Notarised secondary school certificate</option>
+</select>
+
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ngf-select="upload($files)" ngf-multiple="true">Select & Upload</button>
+      </span>
+    </div>
+
+
+
+    <div style="padding-top: 5%">
+<table class="table table-hover table-condensed">
+  <caption>Uploaded Document(s):</caption>
+  <tr style="font-weight: bold">
+<td>Title</td>
+<td>Link</td>
+<td>Status</td>
+
+<td></td>
+</tr>
+<tr ng-repeat="f in personalInfo.docs">
+  <td>
+    <!-- editable username (text with validation) -->
+    <span e-text="f.name" e-name="name" e-form="rowform">
+          {{ f.name || 'none' }}
+        </span>
+  </td>
+  <td>
+    <!-- editable username (text with validation) -->
+    <span e-text="f.url" e-name="url" e-ng-readonly="flag" e-form="rowform">
+         <a href="http://localhost/{{f.url}}"> {{ f.url || 'none' }}</a>
+        </span>
+  </td>
+
+  <td>
+    <!-- editable username (text with validation) -->
+    <span e-text="f.progress" e-name="progress" e-ng-readonly="flag" e-form="rowform">
+        {{ f.progress || 'none' }}
+        </span>
+  </td>
+
+
+  <td style="white-space: nowrap">
+<!-- form -->
+
+<div class="buttons" ng-show="!rowform.$visible">
+
+  <a href="" ng-click="removeFile($index)"><i class="fa fa-remove fa-1x"></i> Remove</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+<uib-progressbar ng-show="progressPercentage" animate="false" value="personalInfo.docs.progress" type="success"><b>{{personalInfo.docs.progress}}%</b></uib-progressbar>
+</div>
+</div>

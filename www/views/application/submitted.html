@@ -1,0 +1,17 @@
+
+   <h4 class="text-center">Thank You!</h4>
+
+
+                    <h3 class="text-center"><strong>{{currentUser.lastname | uppercase}}, {{currentUser.firstname}}</strong></h3>
+                    <h4 class="text-center">The status of your application is</h4>
+                 
+                    <h1 class="text-center"><span ng-if="personalInfo.status <= 4" class="label label-info">PROCESSING</span></h1>
+                     <h1 class="text-center"><span ng-if="personalInfo.status == 5" class="label label-danger">REJECTED</span></h1>
+
+                     <div ng-if="personalInfo.status == 6">
+                      <h1 class="text-center"><span class="label label-success">APPROVED</span></h1></div>
+<p></p>
+                     <div class="col-xs-4 col-xs-offset-4">
+                       <a ui-sref="registration" class="btn btn-md btn-info btn-lg btn-block"  ng-if="personalInfo.status == 6" ng-disabled="personalInfo.status < 6">Go to registration ({{settings[0].schoolYear}})</a>
+                    </div>
+            

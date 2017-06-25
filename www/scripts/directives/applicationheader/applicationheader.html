@@ -1,0 +1,40 @@
+
+  
+<nav class="navbar navbar-default myfix" role="navigation">
+  <div class="navbar" ng-hide="scrolled" ng-if="!collapseApp">
+<img src="img/logo.jpg" alt="IPRC logo" class="logo-img" border="5"> 
+ <a class="navbar-brand" ui-sref="application.start">
+                <h2 class="navbar-text" style="margin-left: 160px; margin-top:40px;">Student Information System</h2>
+            </a>
+  </div>
+    <div class="navbar-header"> 
+      <div ng-show="collapseApp">
+    <span class="openbtn" ng-click="openNavApp()">&#9776;</span>
+ 
+      </div>
+   <a  ng-show="scrolled === true || collapseApp === true" class="navbar-brand" ui-sref="application.start">
+                IPRC EAST
+            </a>
+    </div>
+
+ <div id="mySidenavApp" class="sidenavApp">
+
+       <h2 class="menu-text">MENU  <span> <a href="" ng-click="closeNavApp()">&#9747;</a></span></h2>
+         
+    <ul class="nav sidetabs menu" >
+      <li><a href="#"> <i class="fa fa-book icon-style"></i> Academics</a></li>
+      <li><a href="#"><i class="fa fa-users icon-style"></i> Student Life</a></li>
+     <li><a href="#"> <i class="fa fa-building icon-style"></i> Facilities</a></li>
+    </ul>
+  </div>
+
+
+<ul ng-hide="collapseApp" class="nav navbar-nav navbar-right">
+     
+      
+      <li> <button ng-show="!currentUser" ui-sref="login" type="button" class="btn btn-primary navbar-btn btn-sm navbar-right">Sign In</button>
+      <button ng-show="currentUser" ui-sref="logout" type="button" class="btn btn-primary navbar-btn btn-sm navbar-right">Sign Out</button></li>
+    </ul>
+
+   
+  </nav>

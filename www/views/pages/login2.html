@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+
+      
+          
+      
+
+        <div class="col-md-6 col-md-offset-3">
+
+
+      
+                     
+       
+
+  
+</h4>
+
+      <div class="login-panel panel panel-default" ng-hide="currentUser">
+                <div class="panel-heading"><h4 class="text-center">STARS<sup>®</sup>App<br>
+                     
+            <small class="text-muted">SYSTEM ACCESS</small><br></div>
+                <div class="panel-body">
+
+                            <form role="form" name="loginForm" ng-submit="login(loginemail, loginpassword, rememberMe)" novalidate>
+                                <fieldset>
+                                <div class="alert alert-success" ng-show="message">{{message}}</div>
+
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="E-mail (username)" name="loginemail" ng-model="loginemail" type="email" required>
+                                        <div style="color:red" ng-messages="loginForm.loginemail.$dirty && loginForm.loginemail.$error" role="alert">
+                                            <div ng-message="required">Please enter a password.</div>
+                                            <div ng-message="email">Must be a valid email address.</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" ng-model="loginpassword" name="loginpassword" type="password" required maxlength="15"
+                                            minlength="8" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+                                        <div style="color:red" ng-messages="loginForm.loginpassword.$dirty && loginForm.loginpassword.$error" role="alert">
+                                            <div ng-message="required">Please enter a password.</div>
+                                            <div ng-message="maxlength">Password cannot be more than 15 characters long.</div>
+                                            <div ng-message="minlength">Password cannot be less than 8 characters long.</div>
+                                            <div ng-message="pattern">Password must contain UPPERCASE and lowercase characters and numbers</div>
+                                        </div>
+
+                                    </div>
+                                    <div ng-show="loginError" class="alert alert-danger">{{loginError}}</div>
+                                    <div class="checkbox">
+                                        <label>
+                                    <input name="remember" ng-model="rememberMe" type="checkbox" value="1">Keep me logged in (30 days)
+                                </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-lg btn-success btn-block" ng-disabled="loginForm.$invalid"><i class="fa fa-lock"></i> SIGN IN</button>
+                                    <br><a ui-sref="forgot">I forgot my password.</a>
+                                </fieldset>
+                            </form>
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
