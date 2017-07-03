@@ -11,19 +11,21 @@
 
         <preference name="SplashShowOnlyFirstTime" value="false" />
       <preference name="SplashScreenDelay" value="20000" />
+      <preference name="SplashMaintainAspectRatio" value="false" />
+
     <content src="index.html" />
 
   <platform name="android">
     <!-- you can use any density that exists in the Android project -->
-    <splash src="res/screens/android/screen-hdpi-landscape.png" density="land-hdpi"/>
-    <splash src="res/screens/android/screen-ldpi-landscape.png" density="land-ldpi"/>
-    <splash src="res/screens/android/screen-mdpi-landscape.png" density="land-mdpi"/>
-    <splash src="res/screens/android/screen-xhdpi-landscape.png" density="land-xhdpi"/>
+    <splash src="res/screen/android/screen-hdpi-landscape.png" density="land-hdpi"/>
+    <splash src="res/screen/android/screen-ldpi-landscape.png" density="land-ldpi"/>
+    <splash src="res/screen/android/screen-mdpi-landscape.png" density="land-mdpi"/>
+    <splash src="res/screen/android/screen-xhdpi-landscape.png" density="land-xhdpi"/>
 
-     <splash src="res/screens/android/screen-hdpi-landscape.png" density="port-hdpi"/>
-    <splash src="res/screens/android/screen-ldpi-landscape.png" density="port-ldpi"/>
-    <splash src="res/screens/android/screen-mdpi-landscape.png" density="port-mdpi"/>
-    <splash src="res/screens/android/screen-xhdpi-landscape.png" density="port-xhdpi"/>
+     <splash src="res/screen/android/screen-hdpi-landscape.png" density="port-hdpi"/>
+    <splash src="res/screen/android/screen-ldpi-landscape.png" density="port-ldpi"/>
+    <splash src="res/screen/android/screen-mdpi-landscape.png" density="port-mdpi"/>
+    <splash src="res/screen/android/screen-xhdpi-landscape.png" density="port-xhdpi"/>
  
 </platform>
 
