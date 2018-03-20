@@ -26,7 +26,7 @@
   "cordova-plugin-file": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-file@~4.1.1"
+      "id": "cordova-plugin-file@~6.0.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -75,14 +75,6 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-dialogs@~1.2.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-file-transfer": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-file-transfer@~1.5.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -163,6 +155,14 @@
     "source": {
       "type": "registry",
       "id": "https://github.com/phonegap/phonegap-plugin-barcodescanner.git"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-file-transfer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-file-transfer"
     },
     "is_top_level": true,
     "variables": {}
