@@ -1,7 +1,57 @@
 {
-  "name": "cordova-plugin-camera",
-  "version": "2.1.1",
-  "description": "Cordova Camera Plugin",
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-camera@~2.1.1",
+        "scope": null,
+        "escapedName": "cordova-plugin-camera",
+        "name": "cordova-plugin-camera",
+        "rawSpec": "~2.1.1",
+        "spec": ">=2.1.1 <2.2.0",
+        "type": "range"
+      },
+      "C:\\Users\\carll\\Documents\\barscan\\barscan"
+    ]
+  ],
+  "_from": "cordova-plugin-camera@>=2.1.1 <2.2.0",
+  "_id": "cordova-plugin-camera@2.1.1",
+  "_inCache": true,
+  "_location": "/cordova-plugin-camera",
+  "_nodeVersion": "5.7.1",
+  "_npmOperationalInternal": {
+    "host": "packages-13-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-camera-2.1.1.tgz_1457828370916_0.4306707021314651"
+  },
+  "_npmUser": {
+    "name": "csantanapr",
+    "email": "csantana23@gmail.com"
+  },
+  "_npmVersion": "3.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-camera@~2.1.1",
+    "scope": null,
+    "escapedName": "cordova-plugin-camera",
+    "name": "cordova-plugin-camera",
+    "rawSpec": "~2.1.1",
+    "spec": ">=2.1.1 <2.2.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-camera/-/cordova-plugin-camera-2.1.1.tgz",
+  "_shasum": "9488ba36204e3271480dbe82d9aa708a352df7eb",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-camera@~2.1.1",
+  "_where": "C:\\Users\\carll\\Documents\\barscan\\barscan",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-camera/issues"
+  },
   "cordova": {
     "id": "cordova-plugin-camera",
     "platforms": [
@@ -18,10 +68,20 @@
       "windows"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/apache/cordova-plugin-camera"
+  "dependencies": {},
+  "description": "Cordova Camera Plugin",
+  "devDependencies": {
+    "dmd-plugin-cordova-plugin": "^0.1.0",
+    "husky": "^0.10.1",
+    "jsdoc-to-markdown": "^1.2.0",
+    "jshint": "^2.6.0"
   },
+  "directories": {},
+  "dist": {
+    "shasum": "9488ba36204e3271480dbe82d9aa708a352df7eb",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-camera/-/cordova-plugin-camera-2.1.1.tgz"
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-camera#readme",
   "keywords": [
     "cordova",
     "camera",
@@ -38,21 +98,32 @@
     "cordova-browser",
     "cordova-windows"
   ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "csantanapr",
+      "email": "csantana23@gmail.com"
+    },
+    {
+      "name": "stevegill",
+      "email": "stevengill97@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-camera",
+  "optionalDependencies": {},
   "peerDependencies": {
     "cordova-plugin-file": ">=2.0.0"
   },
-  "scripts": {
-    "precommit": "npm run gen-docs && git add README.md",
-    "gen-docs": "jsdoc2md --template \"jsdoc2md/TEMPLATE.md\" \"www/**/*.js\" --plugin \"dmd-plugin-cordova-plugin\" > README.md",
-    "test": "npm run jshint",
-    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-camera.git"
   },
-  "author": "Apache Software Foundation",
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "dmd-plugin-cordova-plugin": "^0.1.0",
-    "husky": "^0.10.1",
-    "jsdoc-to-markdown": "^1.2.0",
-    "jshint": "^2.6.0"
-  }
+  "scripts": {
+    "gen-docs": "jsdoc2md --template \"jsdoc2md/TEMPLATE.md\" \"www/**/*.js\" --plugin \"dmd-plugin-cordova-plugin\" > README.md",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
+    "precommit": "npm run gen-docs && git add README.md",
+    "test": "npm run jshint"
+  },
+  "version": "2.1.1"
 }
