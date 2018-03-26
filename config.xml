@@ -117,5 +117,6 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="https://github.com/phonegap/phonegap-plugin-barcodescanner.git">
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
     </plugin>
+    <plugin name="cordova-plugin-android-permissions" spec="~1.0.0" />
     <engine name="android" spec="~7.0.0" />
 </widget>
