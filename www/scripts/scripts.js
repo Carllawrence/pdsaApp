@@ -88,7 +88,20 @@ angular.module("yapp")
     angular.element(document).ready(function () {
    
 
-   
+      var permissions = cordova.plugins.permissions;
+      permissions.checkPermission(permission, successCallback, errorCallback);
+      permissions.requestPermission(permission, successCallback, errorCallback);
+      permissions.requestPermissions(permissions, successCallback, errorCallback);
+
+      permissions.requestPermission(permissions.CAMERA, success, error);
+
+function error() {
+  console.warn('Camera permission is not turned on');
+}
+
+function success( status ) {
+  if( !status.hasPermission ) error();
+}
 
   var app = {
     // Application Constructor

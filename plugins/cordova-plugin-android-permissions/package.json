@@ -10,7 +10,7 @@
         "spec": "latest",
         "type": "tag"
       },
-      "C:\\Users\\carll\\Documents\\STMobileApp"
+      "C:\\Users\\carll\\Documents\\barscan\\barscan"
     ]
   ],
   "_from": "cordova-plugin-android-permissions@latest",
@@ -45,7 +45,7 @@
   "_shasum": "9e7c116be668eb7dfa41491b13d8d47da9548149",
   "_shrinkwrap": null,
   "_spec": "cordova-plugin-android-permissions",
-  "_where": "C:\\Users\\carll\\Documents\\STMobileApp",
+  "_where": "C:\\Users\\carll\\Documents\\barscan\\barscan",
   "author": {
     "name": "Jason Yang"
   },
