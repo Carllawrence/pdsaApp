@@ -34,10 +34,10 @@
     <preference name="webviewbounce"    value="false" />
 
     <icon src="icon.png" />
-    <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
-    <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
-    <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
-    <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
+    <icon src="res/icons/android/drawable-ldpi-icon.png"   gap:platform="android"    gap:density="ldpi" />
+    <icon src="res/icons/android/drawable-mdpi-icon.png"   gap:platform="android"    gap:density="mdpi" />
+    <icon src="res/icons/android/drawable-hdpi-icon.png"   gap:platform="android"    gap:density="hdpi" />
+    <icon src="res/icons/android/drawable-xhdpi-icon.png"  gap:platform="android"    gap:density="xhdpi" />
     <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" />
     <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" gap:state="hover"/>
     <icon src="res/icon/ios/icon-57.png"            gap:platform="ios"        width="57" height="57" />
@@ -49,10 +49,10 @@
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
-    <gap:splash src="res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="res/screen/android/screen-mdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="res/screens/android/drawable-port-ldpi-screen.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="res/screens/android/drawable-port-mdpi-screen.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="res/screens/android/drawable-port-hdpi-screen.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="res/screens/android/drawable-port-xhdpi-screen.png" gap:platform="android" gap:density="xhdpi" />
     <gap:splash src="res/screen/blackberry/screen-225.png"         gap:platform="blackberry" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png"    gap:platform="ios"     width="320" height="480" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios"     width="640" height="960" />
