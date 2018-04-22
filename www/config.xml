@@ -16,25 +16,14 @@
     <plugin name="phonegap-plugin-barcodescanner"/>
      <plugin name="cordova-plugin-camera" />
     <plugin name="cordova-plugin-media-capture" />
-    <plugin name="cordova-plugin-console" />
-    <plugin name="cordova-plugin-contacts" />
-    <plugin name="cordova-plugin-device" />
-    <plugin name="cordova-plugin-device-motion" />
-    <plugin name="cordova-plugin-device-orientation" />
-    <plugin name="cordova-plugin-dialogs" />
     <plugin name="cordova-plugin-file"  />
     <plugin name="cordova-plugin-file-transfer"  />
-    <plugin name="cordova-plugin-geolocation"  />
-    <plugin name="cordova-plugin-globalization"  />
-    <plugin name="cordova-plugin-inappbrowser"  />
     <plugin name="cordova-plugin-media" />
     <plugin name="cordova-plugin-network-information"  />
     <plugin name="cordova-plugin-splashscreen"  />
-    <plugin name="cordova-plugin-statusbar"  />
-    <plugin name="cordova-plugin-vibration" />
     <plugin name="cordova-plugin-whitelist" />
 
-    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="phonegap-version" value="default"/>
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
