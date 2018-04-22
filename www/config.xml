@@ -23,7 +23,7 @@
     <plugin name="cordova-plugin-splashscreen"  />
     <plugin name="cordova-plugin-whitelist" />
 
-    <preference name="phonegap-version" value="default"/>
+    <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
