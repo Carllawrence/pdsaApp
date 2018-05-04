@@ -136,9 +136,6 @@
 		}, {
 			title: 'Non numeric Y Axis',
 			path: 'scales/non-numeric-y.html'
-		}, {
-			title: 'Toggle Scale Type',
-			path: 'scales/toggle-scale-type.html'
 		}]
 	}, {
 		title: 'Legend',

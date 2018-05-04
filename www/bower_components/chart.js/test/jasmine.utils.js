@@ -118,6 +118,9 @@ function specFromFixture(description, inputs) {
 			var chart = acquireChart(json.config, json.options);
 			if (!inputs.png) {
 				fail('Missing PNG comparison file for ' + inputs.json);
+				if (!json.debug) {
+					releaseChart(chart);
+				}
 				done();
 			}
 

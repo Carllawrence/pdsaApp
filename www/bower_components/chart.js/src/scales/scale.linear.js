@@ -170,10 +170,11 @@ module.exports = function(Chart) {
 
 			if (me.isHorizontal()) {
 				pixel = me.left + (me.width / range * (rightValue - start));
-			} else {
-				pixel = me.bottom - (me.height / range * (rightValue - start));
+				return Math.round(pixel);
 			}
-			return pixel;
+
+			pixel = me.bottom - (me.height / range * (rightValue - start));
+			return Math.round(pixel);
 		},
 		getValueForPixel: function(pixel) {
 			var me = this;
