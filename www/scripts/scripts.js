@@ -88,7 +88,7 @@ angular.module("yapp")
 
 angular.module("yapp")
 .controller("DashboardCtrl", ["$scope", "$state","$http","$rootScope","$firebaseObject","$timeout", function (r, t, h, rs, fireobj,timeout) { 
-  var ref = firebase.database().ref('/students/-LBePQ-poDZ2qbGaqQE4/data/1/name/');
+  var ref = firebase.database().ref('/students/-LBeS4DFzS5-w9Ty9p3_/data/1/status/');
 
      var obj = fireobj(ref); 
   
