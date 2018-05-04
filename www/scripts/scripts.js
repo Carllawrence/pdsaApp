@@ -87,7 +87,7 @@ angular.module("yapp")
 }]),
 
 angular.module("yapp")
-.controller("DashboardCtrl", ["$scope", "$state","$http","$rootScope","$firebaseObject", function (r, t, h, rs, fireobj) { 
+.controller("DashboardCtrl", ["$scope", "$state","$http","$rootScope","$firebaseObject","$timeout", function (r, t, h, rs, fireobj,timeout) { 
   var ref = firebase.database().ref();
 
      var obj = fireobj(ref); 
@@ -139,14 +139,24 @@ angular.module("yapp")
         scanner.scan( function (result) { 
 
 
-          obj.status = "active";
+          obj.status = "STARTED";
           obj.$save().then(function(ref) {
             ref.key === obj.$id; // true
           }, function(error) {
             console.log("Error:", error);
           });
 
-           
+          timeout(function () {
+
+            obj.status = "DONE";
+            obj.$save().then(function(ref) {
+              ref.key === obj.$id; // true
+            }, function(error) {
+              console.log("Error:", error);
+            });        }, 50000);
+
+       //   $firebase(new Firebase(ref)).$child('foo').$child('title').$set("active")
+
 
            console.log("Scanner result: \n" +
                 "text: " + result.text + "\n" +
