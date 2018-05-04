@@ -108,7 +108,7 @@ app.config(function($mdThemingProvider) {
 });
 
 app.config(["$routeProvider", function($routeProvider) {
-  $routeProvider.when("/home", {
+  $routeProvider.when("/", {
     // the rest is the same for ui-router and ngRoute...
     controller: "HomeCtrl",
     templateUrl: "views/main.html",
