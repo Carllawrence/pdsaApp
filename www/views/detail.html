@@ -1,0 +1,24 @@
+<md-dialog layout-fill layout="column">
+ 
+           <md-button ng-click="cancel()" aria-label="Back">
+        <ng-md-icon icon="arrow_back"></ng-md-icon>
+    </md-button>
+        
+    <md-card flex-xs layout="column">
+        <img ng-src="https://access.strivetogether.org/{{eventDetail.picUrl}}" class="md-card-image" alt="Event Picture">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{eventDetail.title}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        
+        <md-card-content>
+            <h5>{{eventDetail.description}}</h5>
+            <h3>{{eventDetail.date | date:"MMM d, y h:mm:ss a" }}</h3>
+            <h5>{{eventDetail.email}}</h5>
+            <h5>{{eventDetail.venue}}</h5>
+            <h5>{{eventDetail.url}}</h5>
+        </md-card-content>
+
+    </md-card>
+</md-dialog>

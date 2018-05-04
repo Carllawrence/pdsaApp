@@ -1,0 +1,314 @@
+
+    <div layout="column" class="relative" layout-fill role="main">
+      <md-button class="md-fab md-fab-bottom-right" aria-label="Filter" ng-click="showFilter($event)" ng-show="!about">
+        <ng-md-icon icon="settings_overscan"></ng-md-icon>
+      </md-button>
+    
+      <md-toolbar class="md-hue-1" ng-show="!showSearch">
+        <div class="md-toolbar-tools">
+          <div layout="row">
+            <md-toolbar-filler layout="row" layout-align="center center">
+            
+                <md-button ng-click="toggleRight()" ng-hide="isOpenRight()"
+
+                class="md-primary" >
+               <ng-md-icon icon="menu"></ng-md-icon>  </md-button>
+                       </md-toolbar-filler>
+            <h1 class="md-toolbar-tools">
+                <ng-md-icon icon="school"></ng-md-icon>  <span> TutorLink<sup>1.0</sup></span> 
+               
+            </h1>
+          </div>
+          
+          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+            <ng-md-icon icon="search"></ng-md-icon>
+          </md-button>
+         
+        </div>
+        <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+          <md-tab id="tab1" aria-controls="tab1-content">
+            Students
+          </md-tab>
+          <md-tab id="tab2" aria-controls="tab2-content">
+        Analytics
+       
+          </md-tab>
+           <md-tab id="tab3" aria-controls="tab2-content" md-on-select="about=1" md-on-deselect="about = null">
+            Reporting
+            
+          </md-tab>
+          <md-tab id="tab4" aria-controls="tab2-content" md-on-select="about=1" >
+              Map
+              
+            </md-tab>
+        </md-tabs>
+  
+     
+      </md-toolbar>
+      <md-toolbar class="md-hue-1" ng-show="showSearch">
+        <div class="md-toolbar-tools">
+          <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+            <ng-md-icon icon="arrow_back"></ng-md-icon>
+          </md-button>
+          
+          <md-input-container md-theme="input" flex>
+            <label>&nbsp;</label>
+            <input ng-model="search" placeholder="enter search">
+          </md-input-container>
+          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+            <ng-md-icon icon="search"></ng-md-icon>
+          </md-button>
+         
+        </div>
+       
+      </md-toolbar>
+
+   
+      <md-content flex md-scroll-y>
+          <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+              <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">Menu <md-button  ng-click="close()">
+                    <ng-md-icon icon="clear"></ng-md-icon>
+
+                  </md-button></h1> 
+              </md-toolbar>
+              <md-content layout-padding>
+               Other Items
+               
+              </md-content>
+        
+            </md-sidenav>
+        
+        <ui-view layout="column" layout-fill layout-padding>
+            
+          <div class="inset" hide-sm></div>
+            <ng-switch on="data.selectedIndex" class="tabpanel-container">
+              <div role="tabpanel"
+                   id="tab1-content"
+                   aria-labelledby="tab1"
+                   ng-switch-when="0"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()"
+                   layout="row" layout-align="center center">
+                    <md-content layout-xs="column" layout="row">
+                      
+   
+<div ng-repeat="student in students.data | filter:search | filter:{type:stype}">
+  <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{student.name}}</span>
+        <span class="md-subhead">Large</span>
+      </md-card-title-text>
+      <md-card-title-media>
+        <div class="md-media-lg card-media"> <img src="img/pic.png"></div>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-model="student.math.value" ng-change="alert('changed')">{{student.math.value}}</md-button>
+      <md-button>{{student.reading.value}}</md-button>
+    </md-card-actions>
+  </md-card> </div>
+
+    </md-content>
+              </div>
+
+              
+          </ng-switch>
+<ng-switch on="data.selectedIndex" class="tabpanel-container">
+              <div role="tabpanel"
+                   id="tab2-content"
+                   aria-labelledby="tab2"
+                   ng-switch-when="1"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()"
+                   layout="row" layout-align="center center">
+                    <md-content layout-xs="column" layout="row">
+   
+      
+ <md-card>
+            <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Student Activity</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <canvas id="line" class="chart chart-line"
+          chart-data="data" chart-labels="labels" chart-series="series">
+      </canvas>
+          </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="showAdd($event, event._id)"><ng-md-icon icon="remove_red_eye"></md-button>
+         
+        </md-card-actions>
+      </md-card>
+      <md-card>
+          <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Tutor Activity</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+          <canvas id="bar" class="chart chart-bar"
+          chart-data="data" chart-labels="labels" chart-series="series">
+      </canvas>
+        </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="showAdd($event, event._id)"><ng-md-icon icon="remove_red_eye"></md-button>
+       
+      </md-card-actions>
+    </md-card>
+    <md-card>
+        <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Chart Three</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <canvas id="doughnut" class="chart chart-doughnut"
+  chart-data="data" chart-labels="labels">
+    </canvas>
+      </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="showAdd($event, event._id)"><ng-md-icon icon="remove_red_eye"></md-button>
+     
+    </md-card-actions>
+  </md-card>
+    </md-content>
+ 
+              </div>
+
+              
+          </ng-switch>
+
+           <ng-switch on="data.selectedIndex" class="tabpanel-container">
+              <div role="tabpanel"
+                   id="tab3-content"
+                   aria-labelledby="tab3"
+                   ng-switch-when="2"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()"
+                   layout="row" layout-align="left center">
+
+                 
+                   <md-content laout="column" flex>
+                   
+                    <md-card>
+                        <md-card-actions layout="row" layout-align="end center">
+
+                      <div layout="row" layout-wrap class="checkboxes">
+                        <md-checkbox ng-model="options.rowSelection">Row Selection</md-checkbox>
+                        <md-checkbox ng-model="options.multiSelect">Multiple Selection</md-checkbox>
+                        <md-checkbox ng-model="options.autoSelect">Auto Selection</md-checkbox>
+                        <md-checkbox ng-model="options.decapitate">No Header</md-checkbox>
+                        <md-checkbox ng-model="options.largeEditDialog">Lard Edit Dialogs</md-checkbox>
+                        <md-checkbox ng-model="options.boundaryLinks">Pagination Boundary Links</md-checkbox>
+                        <md-checkbox ng-model="options.limitSelect" ng-click="toggleLimitOptions()">Pagination Limit Select</md-checkbox>
+                        <md-checkbox ng-model="options.pageSelect">Pagination Page Select</md-checkbox>
+                    </div>
+                    </md-card-actions>
+                    </md-card>
+                    
+                    <md-card>
+                      
+                      <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+                        <div class="md-toolbar-tools">
+                          <span>Student Records</span>
+                          <div flex></div>
+                          <md-button class="md-icon-button" ng-click="loadStuff()">
+                            <ng-md-icon icon="refresh"></ng-md-icon>
+                          </md-button>
+                        </div>
+                      </md-toolbar>
+                      
+                      <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+                        <div class="md-toolbar-tools">
+                          <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+                        </div>
+                      </md-toolbar>
+                      
+                      <md-table-container>
+                        <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+                          <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+                            <tr md-row>
+                              <th md-column md-order-by="name"><span>Students</span></th>
+                              <th md-column md-order-by="type"><span>Type</span></th>
+                              <th md-column md-numeric md-order-by="sessions.value" md-desc><span>Session</span></th>
+                              <th md-column md-numeric md-order-by="math.value"><span>Math</span></th>
+                              <th md-column md-numeric md-order-by="reading.value"><span>Reading</span></th>
+                              <th md-column md-numeric md-order-by="scoreOne.value"><span>MAT</span></th>
+                              <th md-column md-numeric md-order-by="scoreTwo.value" hide-gt-xs show-gt-md><span>ACT</span></th>
+                              <th md-column md-numeric md-order-by="scoreThree.value" hide-gt-xs show-gt-lg><span>SAT</span></th>
+                              <th md-column md-numeric md-order-by="scoreFour.value" hide-gt-xs show-gt-lg><span>SEL</span></th>
+                              <th md-column md-order-by="comment">
+                                <span>Comments</span>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody md-body>
+                            <tr md-row md-select="student" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="student.calories.value > 400" ng-repeat="student in students.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                              <td md-cell>{{student.name}}</td>
+                              <td md-cell>
+                                <md-select ng-model="student.type" placeholder="Other">
+                                  <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                                </md-select>
+                              </td>
+                              <td md-cell>{{student.sessions.value}}</td>
+                              <td md-cell>{{student.math.value | number: 2}}</td>
+                              <td md-cell>{{student.reading.value}}</td>
+                              <td md-cell>{{student.scoreOne.value | number: 2}}</td>
+                              <td md-cell hide-gt-xs show-gt-md>{{student.scoreTwo.value}}</td>
+                              <td md-cell hide-gt-xs show-gt-lg>{{student.scoreThree.value}}%</td>
+                              <td md-cell hide-gt-xs show-gt-lg>{{student.scoreFour.value}}%</td>
+                              <td md-cell ng-click="editComment($event, student)" ng-class="{'md-placeholder': !student.comment}">
+                                {{student.comment || 'Add a comment'}}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </md-table-container>
+              
+                      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{students.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+                    </md-card>
+                  </md-content>
+ 
+              </div>
+
+              
+          </ng-switch>
+          <ng-switch on="data.selectedIndex" class="tabpanel-container">
+              <div role="tabpanel"
+                   id="tab4-content"
+                   aria-labelledby="tab4"
+                   ng-switch-when="3"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()"
+                   layout="row" layout-align="left center">
+
+                 
+                   <md-content laout="column" flex>
+                   
+                    <md-card>
+                        <md-card-actions layout="row" layout-align="end center">
+
+                      <div layout="row" layout-wrap class="checkboxes">
+                        <md-checkbox ng-model="options.boundaryLinks" ng-click="getSchoolDist()">School Districts</md-checkbox>
+                    </div>
+                    </md-card-actions>
+                    </md-card>
+                    
+                    <md-card>
+                        <leaflet markers="markers" geojson="geojson" center="usa" width="100%" height="400px" event-broadcast="events"></leaflet>
+
+              
+                    </md-card>
+                  </md-content>
+ 
+              </div>
+
+              
+          </ng-switch>
+        </ui-view>
+      </md-content>
+    </div>
