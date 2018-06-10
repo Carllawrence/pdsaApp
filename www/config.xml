@@ -38,7 +38,8 @@ Carl Lawrence    </author>
     <icon src="res/icon/android/drawable-mdpi-icon.png"   gap:platform="android"    gap:density="mdpi" />
     <icon src="res/icon/android/drawable-hdpi-icon.png"   gap:platform="android"    gap:density="hdpi" />
     <icon src="res/icon/android/drawable-xhdpi-icon.png"  gap:platform="android"    gap:density="xhdpi" />
-   
+     
+     <gap:splash src="splash.png" />
     <gap:splash src="res/screen/android/drawable-port-ldpi-screen.png"  gap:platform="android" gap:density="ldpi" />
     <gap:splash src="res/screen/android/drawable-port-mdpi-screen.png"  gap:platform="android" gap:density="mdpi" />
     <gap:splash src="res/screen/android/drawable-port-hdpi-screen.png"  gap:platform="android" gap:density="hdpi" />
