@@ -280,7 +280,8 @@ app.controller('HomeCtrl', ['Auth','currentAuth','$firebaseAuth', '$scope','$tim
       bindEvents: function() {
           document.addEventListener('deviceready', this.onDeviceReady, false);
           document.getElementById('scan').addEventListener('click', this.scan, false);
-  
+          document.getElementById('exit').addEventListener('click', this.exit, false);
+
       },
   
       onDeviceReady: function() {
@@ -302,7 +303,9 @@ app.controller('HomeCtrl', ['Auth','currentAuth','$firebaseAuth', '$scope','$tim
           console.log('Received Event: ' + id);
       },
   
-    
+    exit: function(){
+      navigator.app.exitApp();
+    },
   
       scan: function() {
           console.log('scanning');

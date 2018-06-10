@@ -46,8 +46,6 @@ Carl Lawrence    </author>
     <splash src="res/screen/android/drawable-port-xhdpi-screen.png" platform="android" density="xhdpi" />
    </platform>
 
-
-
      <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
