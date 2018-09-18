@@ -33,16 +33,16 @@ Carl Lawrence    </author>
     <preference name="webviewbounce"    value="false" />
 
     <icon src="icon.png" />
-    <icon src="res/icon/android/drawable-ldpi-icon.png"   gap:platform="android"    gap:density="ldpi" />
-    <icon src="res/icon/android/drawable-mdpi-icon.png"   gap:platform="android"    gap:density="mdpi" />
-    <icon src="res/icon/android/drawable-hdpi-icon.png"   gap:platform="android"    gap:density="hdpi" />
-    <icon src="res/icon/android/drawable-xhdpi-icon.png"  gap:platform="android"    gap:density="xhdpi" />
+    <icon src="res/icon/android/ldpi.png"   gap:platform="android"    gap:density="ldpi" />
+    <icon src="res/icon/android/mdpi.png"   gap:platform="android"    gap:density="mdpi" />
+    <icon src="res/icon/android/hdpi.png"   gap:platform="android"    gap:density="hdpi" />
+    <icon src="res/icon/android/xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
      
 <platform name="android">
-    <splash src="res/screen/android/drawable-port-ldpi-screen.png"  platform="android" density="ldpi" />
-    <splash src="res/screen/android/drawable-port-mdpi-screen.png"  platform="android" density="mdpi" />
-    <splash src="res/screen/android/drawable-port-hdpi-screen.png"  platform="android" density="hdpi" />
-    <splash src="res/screen/android/drawable-port-xhdpi-screen.png" platform="android" density="xhdpi" />
+    <splash src="res/screen/android/ldpi.png"  platform="android" density="ldpi" />
+    <splash src="res/screen/android/mdpi.png"  platform="android" density="mdpi" />
+    <splash src="res/screen/android/hdpi.png"  platform="android" density="hdpi" />
+    <splash src="res/screen/android/xhdpi.png" platform="android" density="xhdpi" />
    </platform>
 
      <access origin="*" />
