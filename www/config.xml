@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.carl.tutorlink"
+        id        = "com.phonegap.carl.pdsaApp"
         version   = "2.0.0">
-    <name>TutorLink</name>
+    <name>rapidPDSA</name>
 
     <description>
-        Scans barcodes.
-    </description>
+Rapid PDSA Tool    </description>
 
-    <author href="http://adoptitude.com" email="carl.lawrence@adoptitude.com">
+    <author href="http://ntaledata.com" email="carl.lawrence@ntaledata.com">
 Carl Lawrence    </author>
 
 

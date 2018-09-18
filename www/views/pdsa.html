@@ -1,0 +1,254 @@
+<div layout="column" class="relative" layout-fill role="main">
+  <md-button class="md-fab md-fab-bottom-right" aria-label="Filter" ng-click="addIntervention()" ng-show="!about">
+    <ng-md-icon icon="add"></ng-md-icon>
+  </md-button>
+
+  <md-toolbar class="md-primary" ng-show="!showSearch">
+    <div class="md-toolbar-tools">
+
+      <div layout="row">
+        <img src="img/pdsa.png" style="padding-top: 12px;"> 
+
+      </div>
+      <span flex></span>
+        
+      <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+
+      <md-button aria-label="logout" class="md-icon-button" ng-click="signout()">
+        <ng-md-icon icon="lock_open"></ng-md-icon>
+      </md-button>
+
+   </div>
+    <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+      <md-tab id="tab1" aria-controls="tab1-content">
+Tests   </md-tab>
+      <md-tab id="tab2" aria-controls="tab2-content" md-on-select="about=1" md-on-deselect="about = null">
+          Data
+      </md-tab>
+      <md-tab id="tab3" aria-controls="tab3-content" md-on-select="about=1" md-on-deselect="about = null">
+        Analytics
+      </md-tab>
+     
+    </md-tabs>
+  </md-toolbar>
+  <md-toolbar class="md-primary" ng-show="showSearch">
+    <div layout="row" layout-align="left left">
+      <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+        <ng-md-icon icon="arrow_back"></ng-md-icon>
+      </md-button>
+      <md-input-container md-theme="input" flex>
+        <label>&nbsp;</label>
+        <input ng-model="search" placeholder="enter search">
+      </md-input-container>
+      <md-button aria-label="Search" ng-click="cancelSearch()">
+        <ng-md-icon icon="close"></ng-md-icon>
+      </md-button>
+    </div>
+
+  </md-toolbar>
+
+  <md-content flex md-scroll-y>
+
+
+    <ui-view layout="column" layout-fill layout-padding>
+
+      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()"
+          layout="row" layout-align="center center">
+          <md-content layout-xs="column" layout="row" >
+
+              <h3 class="md-headline" ng-hide="interventions.length > 0">No Interventions</h3>
+
+            <div ng-repeat="intervention in interventions | filter:search | filter:{type:stype}">
+           
+              <md-card>
+                <img ng-src="img/mathmindset.png" class="md-card-image" alt="Washed Out">
+                <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-headline">{{intervention.title}}
+                    </span>
+                    <h4>Author: {{intervention.firstname | uppercase}}</h4>
+                    <small>Created: {{intervention.date}} </small>
+                  </md-card-title-text>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="start center">
+                  <md-card-icon-actions>
+                    <md-button ng-click="addPDSA($event,intervention.$id)" class="md-fab md-mini  md-success" aria-label="pdsa cycle">
+                        <ng-md-icon icon="autorenew"></ng-md-icon>
+                      </md-button>
+                    <md-button ng-click="editIntervention($event, intervention.$id)" class="md-fab md-mini  md-info" aria-label="edit">
+                        <ng-md-icon icon="edit"></ng-md-icon>
+                      </md-button>
+                      <md-button class="md-fab md-mini  md-primary" aria-label="run chart" ng-click="showRunChart(intervention.$id)">
+                        <ng-md-icon icon="timeline"></ng-md-icon>
+                      </md-button>
+                                 </md-card-actions>
+ 
+              </md-card> </div></div>
+
+        
+
+      </ng-switch>
+      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab3-content" aria-labelledby="tab3" ng-switch-when="2" md-swipe-left="next()" md-swipe-right="previous()"
+          layout="row" layout-align="center center">
+          <md-content layout-xs="column" layout="row">
+
+
+            <md-card>
+              
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <span class="md-headline"><small>Trends</small></span>
+                          </div>
+                      </md-toolbar>
+              
+            
+              <md-card-content>
+                <canvas id="line" class="chart chart-line" chart-data="multiChart" chart-labels="dateData" chart-series="series" chart-options="multiOptions" chart-dataset-override="datasetOverride">
+                </canvas>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc justo lectus, porttitor in urna ut, scelerisque accumsan leo. 
+
+                </p>
+              </md-card-content>
+            
+            </md-card>
+            <md-card>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <span class="md-headline"><small>Top Interventions</small></span>
+                      </div>
+                  </md-toolbar>
+              <md-card-content>
+                <canvas id="bar" class="chart chart-bar" chart-data="dataTwo" chart-options="myOptions" chart-labels="labels" >
+                </canvas>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc justo lectus, porttitor in urna ut, scelerisque accumsan leo. 
+
+                </p>
+              </md-card-content>
+           
+            </md-card>
+            <md-card>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <span class="md-headline"><small>PDSA Activity</small></span>
+                      </div>
+                  </md-toolbar>
+              <md-card-content>
+                <canvas id="doughnut" class="chart chart-doughnut" chart-data="dataOne" chart-labels="labels" chart-series="series">
+                </canvas>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc justo lectus, porttitor in urna ut, scelerisque accumsan leo. 
+
+                </p>
+              </md-card-content>
+            
+            </md-card>
+          </md-content>
+
+        </div>
+
+
+      </ng-switch>
+
+      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()"
+          layout="row" layout-align="left center">
+
+
+          <md-content layout="column" flex>
+
+                      <md-card>
+
+              <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools">
+                  <span>PDSA Records</span>
+                  <div flex></div>
+                  <md-button class="md-icon-button" ng-click="loadStuff()">
+                    <ng-md-icon icon="refresh"></ng-md-icon>
+                  </md-button>
+                </div>
+              </md-toolbar>
+
+              <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+                <div class="md-toolbar-tools">
+                  <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+                </div>
+              </md-toolbar>
+
+              <md-table-container>
+                <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+                  <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+                    <tr md-row>
+                      <th md-column md-order-by="title" md-desc>
+                        <span>Title</span>
+                      </th>
+                      <th md-column md-order-by="date" >
+                          <span>Date</span>
+                        </th>
+                      <th md-column md-order-by="pop" >
+                        <span>Population</span>
+                      </th>
+                      <th md-column md-numeric md-order-by="positive">
+                        <span>Duration(Sec)</span>
+                      </th>
+                      <th md-column md-numeric md-order-by="positive">
+                        <span>Positive</span>
+                      </th>
+                      <th md-column md-numeric md-order-by="negative">
+                        <span>Negative</span>
+                      </th>
+                      <th md-column md-numeric md-order-by="pop">
+                          <span>No Change</span>
+                        </th>
+                      <th md-column md-numeric md-order-by="action">
+                        <span>Action</span>
+                      </th>
+                                            <th md-column md-order-by="comment">
+                        <span>Comments</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody md-body>
+                    <tr md-row md-select="pdsa" md-on-select="logItem" md-auto-select="options.autoSelect" 
+                      ng-repeat="pdsa in pdsas | filter: filter.search | filter:{title:stype} | filter:search |  orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                      <td md-cell>{{pdsa.title}}</td>
+                      <td md-cell>{{pdsa.date | date:'yyyy-MM-dd'}}</td>
+
+                      <td md-cell>{{pdsa.pop}}</td>
+                      <td md-cell>{{pdsa.diff}}s</td>
+
+                      <td md-cell>{{pdsa.positive}}</td>
+                      <td md-cell>{{pdsa.negative}}</td>
+                      <td md-cell> {{pdsa.pop - (pdsa.positive + pdsa.negative) }} </td>
+
+                      <td md-cell>
+                          <md-select ng-model="pdsa.action" placeholder="Actions">
+                            <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                          </md-select>
+                        </td>
+                      <td md-cell ng-click="editComment($event, pdsa)" ng-class="{'md-placeholder': !pdsa.comment}">
+                        {{pdsa.comment || 'Add a comment'}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </md-table-container>
+
+              <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{pdsas.count}}"
+                md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+            </md-card>
+          </md-content>
+
+        </div>
+
+
+      </ng-switch>
+     
+    </ui-view>
+    </md-content>
+</div>

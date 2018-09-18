@@ -28,12 +28,12 @@
   "dependencies": {
     "d3": "~3.5.0"
   },
-  "version": "0.4.22",
-  "_release": "0.4.22",
+  "version": "0.4.24",
+  "_release": "0.4.24",
   "_resolution": {
     "type": "version",
-    "tag": "v0.4.22",
-    "commit": "208b8eca3b4647bd7eccf42e7f92a6720faa9594"
+    "tag": "v0.4.24",
+    "commit": "2b7f8d96f8215f949061ba14253904b0881f0ebb"
   },
   "_source": "https://github.com/masayuki0812/c3.git",
   "_target": "~0.4.x",

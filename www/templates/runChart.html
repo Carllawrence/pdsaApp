@@ -1,0 +1,22 @@
+<md-bottom-sheet class="md-list md-has-header">
+  <md-card>
+              
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span class="md-headline"><small>Run Chart    
+              </small></span>
+          </div>
+      </md-toolbar>
+
+
+<md-card-content>
+    <p>
+{{currentInterObj.title}}    
+    </p> 
+<canvas id="line" height="100%"  class="chart chart-line" pointRadius = "15" chart-data="data" chart-labels="label" chart-options="options" >
+</canvas>
+
+</md-card-content>
+
+</md-card>
+</md-bottom-sheet>

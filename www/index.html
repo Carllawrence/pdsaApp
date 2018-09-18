@@ -1,12 +1,12 @@
 <html lang="en" ng-app="StudentApp">
 <head>
-  <title>TutorLink</title>
+  <title>Collaborative Action Toolkit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <script type="text/javascript" src="cordova.js"></script>
-
   <!-- Angular Material requires Angular.js Libraries -->
+  <script src="bower_components/moment/moment.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
 
   <script src="bower_components/chart.js/dist/Chart.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJsIK6pLZbNQhZVA_Lm6ZMq8qRYIbfiDM&libraries=places" type="text/javascript"></script>
@@ -36,11 +36,10 @@
   <script src="bower_components/leaflet/dist/leaflet.js"></script>
   <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
   <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
-
-      <script src="app.js"></script>
-
-  
-<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+  <link rel="stylesheet" href="style/style.css">
+  <script src="bower_components/ngDraggable/ngDraggable.js"></script>
+  <script src="bower_components/angular-moment/angular-moment.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -53,6 +52,10 @@
   };
   firebase.initializeApp(config);
 </script>
+
+      <script src="app.js"></script>
+      <script src="services/auth.js"></script>
+
 
 <!-- AngularFire -->
 <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>

@@ -1,0 +1,248 @@
+<div layout="column" class="relative" layout-fill role="main">
+  <md-button class="md-fab md-fab-bottom-right" aria-label="Filter" ng-click="showadd($event)" ng-show="!about">
+    <ng-md-icon icon="filter_list"></ng-md-icon>
+  </md-button>
+
+  <md-toolbar class="md-primary" ng-show="!showSearch">
+    <div class="md-toolbar-tools">
+
+ <img src="img/logo.png" style="padding-top: 20px;">    
+
+     
+      <span flex></span>
+    
+  
+      <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+
+      <md-button aria-label="logout" class="md-icon-button" ng-click="signout()">
+        <ng-md-icon ng-show="currentUser" icon="lock_open"></ng-md-icon>
+        <ng-md-icon ng-hide="currentUser" icon="lock"></ng-md-icon>
+      </md-button>
+     
+    </div>
+
+    <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+        <md-tab id="tab1" aria-controls="tab1-content" md-on-select="about=1" md-on-deselect="about = null">
+            <small><strong>Apps</strong></small>
+  
+        </md-tab>
+      <md-tab id="tab2" aria-controls="tab2-content">
+          <small><strong>Dashboards</strong></small> 
+      </md-tab>
+      <md-tab id="tab3" aria-controls="tab3-content">
+          <small><strong>Reports</strong></small>
+      </md-tab>
+    
+       
+    </md-tabs>       
+  </md-toolbar>
+  <md-toolbar class="md-primary" ng-show="showSearch">
+    <div layout="row" layout-align="left left">
+      <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+        <ng-md-icon icon="arrow_back"></ng-md-icon>
+      </md-button>
+      <img src="img/logo.png">
+    </div>
+    <div class="md-toolbar-tools">
+
+
+
+      <md-input-container md-theme="input" flex>
+        <label>&nbsp;</label>
+        <input ng-model="search" placeholder="enter search">
+      </md-input-container>
+      <md-button aria-label="Search" ng-click="cancelSearch()">
+        <ng-md-icon icon="close"></ng-md-icon>
+      </md-button>
+    </div>
+
+  </md-toolbar>
+
+  <md-content flex md-scroll-y>
+ 
+
+    <ui-view layout="column" layout-fill layout-padding>
+
+      <div class="inset" hide-sm></div>
+      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()"
+          layout="row" layout-align="center center">
+          <md-content layout="row" >
+
+              <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+                  <md-card-title>
+                    <md-card-title-text>
+                      <span class="md-headline">Urban Core Student Insights</span>
+                      <span class="md-subhead">gubergren definitionem vim ea.</span>
+                     
+                    </md-card-title-text>
+                  </md-card-title>
+                  <md-card-content layout="row" layout-align="space-between">
+                    <div class="md-media-xl card-media"><img src="img/tableau.png" width="100%"></div>
+          
+                    <md-card-actions layout="column">
+                      <md-button class="md-icon-button" aria-label="Favorite">
+                        <ng-md-icon ng-show="currentUser" icon="launch" size="30" ></ng-md-icon>
+                        <ng-md-icon ng-hide="currentUser" icon="lock" size="30"></ng-md-icon>
+    
+                      </md-button>
+                      <md-button class="md-icon-button" aria-label="Settings">
+                        <ng-md-icon icon="favorite" size="30" ></ng-md-icon>
+                      </md-button>
+                      <md-button class="md-icon-button" aria-label="Share">
+                        <ng-md-icon icon="share" size="30" ></ng-md-icon>
+                      </md-button>
+                     
+                    </md-card-actions>
+                  </md-card-content>
+                </md-card>
+            <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Urban Core Student Insights</span>
+                  <span class="md-subhead">gubergren definitionem vim ea.</span>
+                 
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content layout="row" layout-align="space-between">
+                <div class="md-media-xl card-media"><img src="img/tableau.png" width="100%"></div>
+      
+                <md-card-actions layout="column">
+                  <md-button class="md-icon-button" aria-label="Favorite">
+                    <ng-md-icon ng-show="currentUser" icon="launch" size="30" ></ng-md-icon>
+                    <ng-md-icon ng-hide="currentUser" icon="lock" size="30"></ng-md-icon>
+
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Settings">
+                    <ng-md-icon icon="favorite" size="30" ></ng-md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Share">
+                    <ng-md-icon icon="share" size="30" ></ng-md-icon>
+                  </md-button>
+                 
+                </md-card-actions>
+              </md-card-content>
+            </md-card>
+            <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Urban Core Student Insights</span>
+                  <span class="md-subhead">gubergren definitionem vim ea.</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content layout="row" layout-align="space-between">
+                <div class="md-media-xl card-media"><img src="img/tableau.png" width="100%"></div>
+      
+                <md-card-actions layout="column">
+                  <md-button class="md-icon-button" aria-label="Favorite">
+                    <ng-md-icon icon="launch" size="30" ></ng-md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Settings">
+                    <ng-md-icon icon="favorite" size="30" ></ng-md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Share">
+                    <ng-md-icon icon="share" size="30" ></ng-md-icon>
+                  </md-button>
+                </md-card-actions>
+              </md-card-content>
+            </md-card>
+          
+            </md-content></div>
+
+
+
+      </ng-switch>
+      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
+          <md-subheader class="md-primary">Data-driven real-time data products that help increase efficency and efficacy.</md-subheader>
+          <md-grid-list
+            md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+            md-row-height-gt-md="1:1" md-row-height="2:2"
+            md-gutter="12px" md-gutter-gt-sm="8px" >
+           
+             
+            <md-grid-tile class="red"
+                md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <img src="img/request.png" width="100px;">
+              <md-grid-tile-footer>
+                <h3><a href="#!/home/Request">
+                  Data Product Requests </a></h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+
+
+        <md-grid-tile class="gray">
+          <img src="img/icon.png" width="80px;">
+          <md-grid-tile-footer>
+            <h3>                <a href="#!/home/Tutor">TutorLink</a></h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+    
+        <md-grid-tile class="gray">
+          <img src="img/mapappicon.png" width="80px;">
+          <md-grid-tile-footer>
+            <h3>  
+              Community Asset Mapper </h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile class="gray">
+          <img src="img/pdsaimg.png" width="100px;">
+          <md-grid-tile-footer>
+            <h3>  <a href="#!/home/pdsa">RapidPDSA</a>
+            </h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+    
+      </md-grid-list>
+
+        </div>
+
+
+      </ng-switch>
+
+      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab3-content" aria-labelledby="tab3" ng-switch-when="2" md-swipe-left="next()" md-swipe-right="previous()"
+          layout="row" layout-align="left left">
+          <md-content layout="column">
+            <md-calendar ng-model="birthday"></md-calendar>
+          </md-content>
+          
+          <md-content layout="column" flex>
+            <md-list >
+              <md-list-item class="md-3-line">
+                <ng-md-icon icon="multiline_chart" size="50"></ng-md-icon>
+                <div class="md-list-item-text" layout="column">
+                  <h2>Elitr integre et eam. </h2>
+                  <h4>Vel ut maiorum tacimates, accumsan vituperatoribus eos ad</h4>
+                  <p>Lorem ipsum dolor sit amet, pro elaboraret suscipiantur ne, pro meis illud soluta id. An stet definiebas vel. Vel an molestie torquatos, nec ex essent scripserit. Eum an equidem impedit intellegat, tation iracundia ius id, ex nisl dicunt vivendo eos. Eam ex nibh omittam accusata.</p>
+                  <ng-md-icon icon="file_download" class="md-secondary" ng-click="doSecondaryAction($event)"></ng-md-icon>
+                  <ng-md-icon ng-show="currentUser" class="md-secondary" icon="lock_open"></ng-md-icon>
+                  <ng-md-icon ng-hide="currentUser" class="md-secondary" icon="lock"></ng-md-icon>
+                </div>
+              </md-list-item>
+              <md-divider ></md-divider>
+              <md-list-item class="md-3-line">
+                <ng-md-icon icon="pie_chart" size="50"></ng-md-icon>
+                <div class="md-list-item-text" layout="column">
+                  <h2>Elitr integre et eam. </h2>
+                  <h4>Vel ut maiorum tacimates, accumsan vituperatoribus eos ad</h4>
+                  <p>Lorem ipsum dolor sit amet, pro elaboraret suscipiantur ne, pro meis illud soluta id. An stet definiebas vel. Vel an molestie torquatos, nec ex essent scripserit. Eum an equidem impedit intellegat, tation iracundia ius id, ex nisl dicunt vivendo eos. Eam ex nibh omittam accusata.</p>
+                  <ng-md-icon icon="file_download" class="md-secondary" ng-click="doSecondaryAction($event)"></ng-md-icon>
+              
+
+                </div>
+              </md-list-item>
+
+              </md-list>
+          </md-content>
+
+        </div>
+
+
+      </ng-switch>
+    </ui-view>
+  </md-content>
+</div>

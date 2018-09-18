@@ -1,0 +1,109 @@
+
+   <md-dialog aria-label="New PDSA" >
+        <form>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h1>New PDSA Cycle</h1>
+              <span flex></span>
+              <md-button class="md-icon-button" ng-click="cancel()">
+                    <ng-md-icon icon="close"></ng-md-icon>
+                </md-button>
+            </div>
+          </md-toolbar>
+          <md-dialog-content>
+                <md-tabs md-selected="dd" md-dynamic-height md-border-bottom>
+                        <md-tab label="PLAN" >
+                          <md-content class="md-padding">
+                                <h2>{{currentInterObj.title}}</h2>
+                            <p>{{currentInterObj.description}}</p>
+                            <p>{{currentInterObj.expectedResult}}</p>
+
+
+
+                          </md-content>
+                        </md-tab>
+                        <md-tab label="DO">
+                          <md-content class="md-padding">
+                            <md-subheader class="md-no-sticky">Steps to perform</md-subheader>
+                            <md-list-item ng-repeat="st in currentInterObj.steps">
+                              <p> {{st.detail }} </p>
+                              <md-checkbox class="md-secondary" ng-model="st.done" ng-change="currentInterObj.$save()"></md-checkbox>
+                            </md-list-item>
+                          
+                            <md-divider></md-divider>                         
+                                                  </md-content>
+                        </md-tab>
+                        <md-tab label="STUDY">
+                          <md-content class="md-padding">
+                                <h4> Result: {{data.plus / data.pop * 100 | number: 2}}% </h4>
+                              
+                                <md-slider-container>
+                                  <span> <ng-md-icon icon="people"></ng-md-icon>   </span>
+                                  <md-slider min="10" max="300" ng-model="data.pop" aria-label="Population" id="red-slider"
+                                             class="md-warn">
+                                  </md-slider>
+                                  <md-input-container>
+                                    <input type="number" ng-model="data.pop" aria-label="red" aria-controls="red-slider">
+                                  </md-input-container>
+                                </md-slider-container>
+                            
+                                <md-slider-container>
+                                        <span> <ng-md-icon icon="thumb_up"></ng-md-icon>   </span>
+                                        <md-slider ng-model="data.plus" min="0" max="{{data.pop}}" aria-label="Positive" id="green-slider"
+                                             class="md-accent">
+                                  </md-slider>
+                                  <md-input-container>
+                                    <input type="number" ng-model="data.plus" aria-label="Positive" aria-controls="green-slider">
+                                  </md-input-container>
+                                </md-slider-container>
+                                <md-slider-container>
+                                        <span> <ng-md-icon icon="thumb_down"></ng-md-icon>   </span>
+                                        <md-slider ng-model="data.minus" min="0" max="{{data.pop - data.plus}}" aria-label="Negative" id="blue-slider"
+                                                 class="md-primary">
+                                      </md-slider>
+                                      <md-input-container>
+                                        <input type="number" ng-model="data.minus" aria-label="Negative" aria-controls="blue-slider">
+                                      </md-input-container>
+                                    </md-slider-container>
+</md-content>
+                        </md-tab>
+                        <md-tab label="ACT">
+                                <md-content class="md-padding">
+                                  <p>  <h3>Selected: <span class="radioValue" >{{ pdsa.action }}</span> </h3>
+
+                                  <md-radio-group ng-model="pdsa.action">
+                              
+                                    <md-radio-button value="Adapt" class="md-primary">Improve the change and continue testing the plan.</md-radio-button>
+                                    <md-radio-button value="Adopt"> Select changes to implement on a larger scale and develop an implementation plan and plan of sustainability.</md-radio-button>
+                                    <md-radio-button value="Abandon"> Discard this change idea and try a different one.</md-radio-button>
+                              
+                                  </md-radio-group>
+                              
+                                  <hr /></p>
+                                </md-content>
+                              </md-tab>
+                      </md-tabs>
+          </md-dialog-content>
+      
+    <md-dialog-actions layout="row">
+            
+            <span flex></span>
+            <md-button class="md-raised md-primary" ng-click="dd=dd-1" ng-hide="dd === 0">
+              Back
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="dd= dd+1" ng-hide="dd === 3" style="margin-right:20px;" >
+              Next
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="submitPDSA(pdsa)" ng-show="dd === 3" style="margin-right:20px;" >
+                    Submit
+                  </md-button>
+          </md-dialog-actions>
+         
+        </form>
+
+      </md-dialog>
+   
+
+
+      
+           

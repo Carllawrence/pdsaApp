@@ -1,0 +1,88 @@
+<md-dialog aria-label="Edit Intervention">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h1>Edit {{currentInterObj.title}} Intervention</h1>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <ng-md-icon icon="close"></ng-md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <form>
+
+      <md-tabs md-selected="dd" md-dynamic-height md-border-bottom>
+        <md-tab label="STRATEGY">
+          <md-content class="md-padding">
+              <md-subheader class="md-no-sticky">Put instructions here</md-subheader>
+            <p>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Title</label>
+                <input ng-model="currentInterObj.title" ng-change="currentInterObj.$save()"> </md-input-container>
+            </p>
+            <p>
+              <md-input-container class="md-block">
+                <label>Description</label>
+                <textarea ng-model="currentInterObj.description" md-maxlength="500" rows="5" md-select-on-focus ng-change="currentInterObj.$save()"></textarea>
+              </md-input-container>
+            </p>
+          </md-content>
+        </md-tab>
+        <md-tab label="EXPECTED RESULTS">
+          <md-content class="md-padding">
+              <md-subheader class="md-no-sticky">Put instructions here</md-subheader>
+              <p>
+              <md-input-container class="md-block">
+                <label>Description</label>
+                <textarea ng-model="currentInterObj.expectedResult" md-maxlength="500" rows="5" md-select-on-focus ng-change="currentInterObj.$save()"></textarea>
+              </md-input-container>
+            </p>
+
+          </md-content>
+        </md-tab>
+        <md-tab label="STEPS">
+          <md-content class="md-padding">
+              <md-subheader class="md-no-sticky">Put instructions here</md-subheader>
+
+          </md-content>
+            <md-input-container>
+              <label>Add Step</label>
+              <input ng-model="steps.detail">
+
+            </md-input-container>
+            <md-button class="md-fab md-primary md-hue-2" ng-click="upStep(currentInterObj.$id, steps)">
+                <ng-md-icon icon="note_add"></ng-md-icon>
+              </md-button>
+
+            <md-list flex>
+              <md-list-item ng-repeat="obj in currentInterObj.steps" ng-drop="true" ng-drop-success="onEditDropComplete($index, $data,$event)">
+                <div ng-drag="true" ng-drag-data="obj" ng-class="obj.detail" style="cursor:pointer">
+                  Step {{$index + 1}} : {{obj.detail}}
+                </div><md-button ng-click="delStep($index)">
+                    <ng-md-icon icon="remove_circle_outline"></ng-md-icon>
+                  </md-button>
+                <md-divider></md-divider>
+
+              </md-list-item>
+            </md-list>
+
+        </md-tab>
+
+      </md-tabs>
+  </md-dialog-content>
+
+  <md-dialog-actions layout="row">
+
+    <span flex></span>
+    <md-button class="md-raised md-primary" ng-click="dd=dd-1" ng-hide="dd === 0">
+      Back
+    </md-button>
+    <md-button class="md-raised md-primary" ng-click="dd= dd +1" ng-hide="dd === 2">
+      Next
+    </md-button>
+    
+  </md-dialog-actions>
+
+  </form>
+
+</md-dialog>
